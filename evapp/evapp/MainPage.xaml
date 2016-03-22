@@ -22,7 +22,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="70,260,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="165" Width="215"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="70,260,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="165" Width="215" Foreground="#FFC7D8D5"/>
 
     </Grid>
 </Page>
