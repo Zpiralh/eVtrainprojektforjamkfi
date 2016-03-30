@@ -29,7 +29,7 @@ namespace evapp
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            textBlock.Text = "ElvisVeljeni!"; 
+            textBlock.Text = "Tähä sit vitusti junia";
         }
     }
 }
