@@ -13,8 +13,21 @@ namespace evapp
         public string petunimi;
         public string psukunimi;
         public string plahtoasema;
-
         public string ppaateasema;
+    }
+    class Junat
+    {
+        public void GetTrains(ref string muuttuja)
+        {
+
+            muuttuja = "Tähä sit vitusti junia";
+
+
+            for (int tekstiaa = 0; tekstiaa < 10; tekstiaa++)
+            {
+                muuttuja = muuttuja + " \n Tähä sit vitusti junia";
+            }
+        }
     }
 
     public class databaseMYSQL
@@ -39,7 +52,7 @@ namespace evapp
 
         }
 
-        public void FindFromDB(string dbquery,Dictionary<string,string> lista)
+        public void FindFromDB(string dbquery, Dictionary<string, string> lista)
         {
             MySqlCommand query = connection.CreateCommand();
             query.CommandText = dbquery;
@@ -54,6 +67,7 @@ namespace evapp
                 // Virheilmoitus
             }
         }
+
      
     }   
 }
