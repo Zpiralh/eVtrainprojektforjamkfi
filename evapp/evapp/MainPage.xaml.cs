@@ -19,17 +19,21 @@ namespace evapp
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+    /// </summary
+    ///>
+    
     public sealed partial class MainPage : Page
     {
         public MainPage()
         {
             this.InitializeComponent();
         }
-
+        public string muuttuja;
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            textBlock.Text = "Tähä sit vitusti junia";
+            Junat juna = new Junat();
+            juna.GetTrains(ref muuttuja);
+            textBlock.Text = muuttuja;
         }
     }
 }
