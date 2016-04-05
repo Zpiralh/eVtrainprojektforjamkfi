@@ -17,6 +17,8 @@ namespace evapp
     }
     class Junat
     {
+        //host, port, user, passwd, kanta
+        databaseMYSQL database = new databaseMYSQL("localhost", 3306, "root","", "test");
         public void GetTrains(ref string muuttuja)
         {
 
@@ -25,7 +27,7 @@ namespace evapp
 
             for (int tekstiaa = 0; tekstiaa < 10; tekstiaa++)
             {
-                muuttuja = muuttuja + " \n Tähä sit vitusti junia";
+                muuttuja = muuttuja + "\nTähä sit vitusti junia";
             }
         }
     }
