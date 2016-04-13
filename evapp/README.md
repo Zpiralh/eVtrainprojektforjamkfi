@@ -6,4 +6,5 @@ Valmiit tääl: http://student.labranet.jamk.fi/~K2065/
 
 
 13.4.2016 - 02:33 - Sain MySQL ongelmat C#:n kanssa ratkaistua. Nyt vaan pitää ruveta rakentaa sitä softaa  / en vielä ole päivittänyt softaa gittiin pitää vielä siivota vähän koodia :) - Niko
+
 13.4.2016 - 13:04 - uusin koodi laitettu githubiin. - Niko
