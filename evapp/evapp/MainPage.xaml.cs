@@ -27,14 +27,29 @@ namespace evapp
     {
  
         public Dictionary<int, Junatiedot> junat = new Dictionary<int, Junatiedot>();
+        public Dictionary<int, Asema> asemat = new Dictionary<int, Asema>();
+
         public MainPage()
         {
             this.InitializeComponent();
-  
+
+
+            Asema asema1 = new Asema { Asemaid = "HKI", Asemanimi = "Helsingin rautatieasema" };
+            Asema asema2 = new Asema { Asemaid = "JKL", Asemanimi = "Jyväskylä matkakeskus" };
+            Asema asema3 = new Asema { Asemaid = "OUL", Asemanimi = "Oulun rautatieasema" };
+            Asema asema4 = new Asema { Asemaid = "TKU", Asemanimi = "Turun rautatieasema" };
+            Asema asema5 = new Asema { Asemaid = "TRE", Asemanimi = "Tampereen rautatieasema" };
+            asemat.Add(1, asema1);
+            asemat.Add(2, asema2);
+            asemat.Add(3, asema3);
+            asemat.Add(4, asema4);
+            asemat.Add(5, asema5);
+
+            comboBox.DataContext = asemat;
         }
         public string muuttuja = " ";
      
-
+        
        
 
 
@@ -63,8 +78,6 @@ namespace evapp
             }
 
         }
-
-
 
     }
 }

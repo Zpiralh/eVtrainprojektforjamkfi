@@ -23,6 +23,11 @@ namespace evapp
         public string JunaNimi { get; set; }
         public string JunaPVM { get; set; }
     }
+    public class Asema
+    {
+        public string Asemaid { get; set; }
+        public string Asemanimi { get; set; }
+    }
     public class databaseMYSQL
     {
         public MySqlConnection connection = new MySqlConnection();
