@@ -45,7 +45,16 @@ namespace evapp
             asemat.Add(4, asema4);
             asemat.Add(5, asema5);
 
-            comboBox.DataContext = asemat;
+            comboBox.Items.Add(asema1.Asemanimi);
+            comboBox.Items.Add(asema2.Asemanimi);
+            comboBox.Items.Add(asema3.Asemanimi);
+            comboBox.Items.Add(asema4.Asemanimi);
+            comboBox.Items.Add(asema5.Asemanimi);
+            comboBox1.Items.Add(asema1.Asemanimi);
+            comboBox1.Items.Add(asema2.Asemanimi);
+            comboBox1.Items.Add(asema3.Asemanimi);
+            comboBox1.Items.Add(asema4.Asemanimi);
+            comboBox1.Items.Add(asema5.Asemanimi);
         }
         public string muuttuja = " ";
      
