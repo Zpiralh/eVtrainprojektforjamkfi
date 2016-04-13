@@ -7,6 +7,7 @@ using MySql.Data.MySqlClient;
 
 namespace evapp
 {
+    /*
     class Lippu
     {
         public string id;
@@ -14,62 +15,62 @@ namespace evapp
         public string psukunimi;
         public string plahtoasema;
         public string ppaateasema;
-    }
-    class Junat
+    }*/
+    public class Junatiedot
     {
-        //host, port, user, passwd, kanta
-        databaseMYSQL database = new databaseMYSQL("localhost", 3306, "root","", "test");
-        public void GetTrains(ref string muuttuja)
-        {
-
-            muuttuja = "Tähä sit vitusti junia";
-
-
-            for (int tekstiaa = 0; tekstiaa < 10; tekstiaa++)
-            {
-                muuttuja = muuttuja + "\nTähä sit vitusti junia";
-            }
-        }
+        //testausta vain
+        public string Junaid { get; set; }
+        public string JunaNimi { get; set; }
+        public string JunaPVM { get; set; }
     }
-
     public class databaseMYSQL
     {
         public MySqlConnection connection = new MySqlConnection();
 
-
         public databaseMYSQL(String hostname, int port, String username, String password, String database)
         {
+            System.Text.EncodingProvider ppp;
+            ppp = System.Text.CodePagesEncodingProvider.Instance;
+            Encoding.RegisterProvider(ppp);
             try
             {
                 connection.ConnectionString = "server=" + hostname + ";" +
                     "database=" + database + ";" +
                         "uid=" + username + ";" +
-                        "password=" + password + ";";
+                        "password=" + password + ";" +  
+                        "SslMode = None;";
                 connection.Open();
             }
-            catch
+            catch 
             {
-
+   
             }
 
         }
-
-        public void FindFromDB(string dbquery, Dictionary<string, string> lista)
+        //esimerkki että miten haetaan kannasta Junat (EI JUNAVUOROJA)
+        public string GetTrains(string dbquery, ref Dictionary<int, Junatiedot> junat)
         {
             MySqlCommand query = connection.CreateCommand();
             query.CommandText = dbquery;
+
             try
             {
                 MySqlDataReader result = query.ExecuteReader();
-                result.Close();
-                connection.Close();
+                    while (result.Read())
+                    {
+                        junat.Add(int.Parse(result["JunaID"].ToString()), new Junatiedot { Junaid = result["JunaID"].ToString(), JunaNimi = result["Junatyyppi"].ToString(), JunaPVM = result["KayttoonottoPvm"].ToString() });
+                    }
+                    result.Close();
+                    connection.Close();
+                
+                return "OK";
             }
-            catch
+            catch (Exception ex)
             {
-                // Virheilmoitus
+                return (ex.Message + " ");
             }
         }
+    }
 
-     
-    }   
-}
+
+    }

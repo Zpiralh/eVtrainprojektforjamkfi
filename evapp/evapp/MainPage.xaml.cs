@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient.RT;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,19 +22,46 @@ namespace evapp
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary
     ///>
-    
+   
     public sealed partial class MainPage : Page
     {
+ 
+        public Dictionary<int, Junatiedot> junat = new Dictionary<int, Junatiedot>();
         public MainPage()
         {
             this.InitializeComponent();
+  
         }
-        public string muuttuja;
+        public string muuttuja = " ";
+     
+
+       
+
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            Junat juna = new Junat();
-            juna.GetTrains(ref muuttuja);
-            textBlock.Text = muuttuja;
+            ListTrains();
+
+        }
+        private void ListTrains()
+        {
+   
+            databaseMYSQL database = new databaseMYSQL("localhost", 3306, "root", "", "test");
+                string kekke = database.GetTrains("SELECT * FROM juna", ref junat);
+            //varmistus juttuja vielä kun haetaan junat ei junavuoroja (tietokannan ongelmien selvitystä oli)
+            if(kekke == "OK") { 
+            foreach (Junatiedot club in junat.Values)
+            {
+                muuttuja += ("ID: " + club.Junaid + " Nimi: " + club.JunaNimi + " PVM: " + club.JunaPVM + "\n");
+                   
+                }
+                textBlock.Text = "OK " + muuttuja;
+            }
+            else
+            {
+                textBlock.Text = muuttuja + " " + kekke;
+            }
+
         }
     }
 }
