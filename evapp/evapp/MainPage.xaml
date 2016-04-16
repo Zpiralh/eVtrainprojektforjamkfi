@@ -14,7 +14,7 @@
                 <GradientStop Color="#FF63E625" Offset="0.663"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <DatePicker HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Width="340" Background="#FF71A822"/>
+        <DatePicker x:Name="pvmvalinta" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Width="340" Background="#FF71A822"/>
         <Grid Height="95" Margin="10,105,185,0" VerticalAlignment="Top">
 
             <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="145" Background="#FF71A822">
@@ -29,7 +29,11 @@
             <Button x:Name="button" Content="Hae" HorizontalAlignment="Stretch" Margin="128,10,128,10" VerticalAlignment="Stretch" Background="#FF71A822" Click="button_Click"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="378" Margin="10,252,10,0" VerticalAlignment="Top" Width="340">
-            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="172" Width="320" FontSize="32"/>
+            <TextBlock x:Name="lahtoasemabox" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="130" TextAlignment="Center"/>
+            <TextBlock x:Name="paateasemabox" HorizontalAlignment="Left" Margin="200,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="130" TextAlignment="Center"/>
+            <TextBlock x:Name="lahtoaikabox" HorizontalAlignment="Left" Margin="10,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
+            <TextBlock x:Name="paateaikabox" HorizontalAlignment="Left" Margin="200,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,129,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="95" Width="320"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="53" Margin="10,10,10,0" VerticalAlignment="Top" Width="350">
             <TextBlock x:Name="otsikko" HorizontalAlignment="Left" TextWrapping="Wrap" Text="eV" VerticalAlignment="Top" Height="43" Width="340" TextAlignment="Center" Foreground="#FF67D819" FontSize="32" FontFamily="Broadway" Margin="0,10,0,0"/>

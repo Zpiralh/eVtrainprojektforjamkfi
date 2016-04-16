@@ -22,62 +22,55 @@ namespace evapp
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary
     ///>
-   
+
     public sealed partial class MainPage : Page
     {
- 
+
         public Dictionary<int, Junatiedot> junat = new Dictionary<int, Junatiedot>();
-        public Dictionary<int, Asema> asemat = new Dictionary<int, Asema>();
+        public Dictionary<string, string> asemat = new Dictionary<string, string>();
+        public Dictionary<int, Junavuoro> vuorot = new Dictionary<int, Junavuoro>();
 
         public MainPage()
         {
             this.InitializeComponent();
 
+            asemat.Add("HKI", "Helsinki rautatieasema");
+            asemat.Add("JKL", "Jyväskylä matkakeskus");
+            asemat.Add("OUL", "Oulun rautatieasema");
+            asemat.Add("TRE", "Tampereen rautatieasema");
+            asemat.Add("TKU", "Turun rautatieasema");
 
-            Asema asema1 = new Asema { Asemaid = "HKI", Asemanimi = "Helsingin rautatieasema" };
-            Asema asema2 = new Asema { Asemaid = "JKL", Asemanimi = "Jyväskylä matkakeskus" };
-            Asema asema3 = new Asema { Asemaid = "OUL", Asemanimi = "Oulun rautatieasema" };
-            Asema asema4 = new Asema { Asemaid = "TKU", Asemanimi = "Turun rautatieasema" };
-            Asema asema5 = new Asema { Asemaid = "TRE", Asemanimi = "Tampereen rautatieasema" };
-            asemat.Add(1, asema1);
-            asemat.Add(2, asema2);
-            asemat.Add(3, asema3);
-            asemat.Add(4, asema4);
-            asemat.Add(5, asema5);
+            foreach (string value in asemat.Values)
+            {
+                comboBox.Items.Add(value);
+                comboBox1.Items.Add(value);
+            }
 
-            comboBox.Items.Add(asema1.Asemanimi);
-            comboBox.Items.Add(asema2.Asemanimi);
-            comboBox.Items.Add(asema3.Asemanimi);
-            comboBox.Items.Add(asema4.Asemanimi);
-            comboBox.Items.Add(asema5.Asemanimi);
-            comboBox1.Items.Add(asema1.Asemanimi);
-            comboBox1.Items.Add(asema2.Asemanimi);
-            comboBox1.Items.Add(asema3.Asemanimi);
-            comboBox1.Items.Add(asema4.Asemanimi);
-            comboBox1.Items.Add(asema5.Asemanimi);
+
         }
         public string muuttuja = " ";
-     
-        
-       
+
+
+
 
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            ListTrains();
-
+            //ListTrains();
+            Search();
         }
         private void ListTrains()
         {
-   
+
             databaseMYSQL database = new databaseMYSQL("localhost", 3306, "root", "", "test");
-                string kekke = database.GetTrains("SELECT * FROM juna", ref junat);
+            string kekke = database.GetTrains("SELECT * FROM Juna", ref junat);
             //varmistus juttuja vielä kun haetaan junat ei junavuoroja (tietokannan ongelmien selvitystä oli)
-            if(kekke == "OK") { 
-            foreach (Junatiedot club in junat.Values)
+            if (kekke == "OK")
             {
-                muuttuja += ("ID: " + club.Junaid + " Nimi: " + club.JunaNimi + " PVM: " + club.JunaPVM + "\n");
-                   
+                foreach (Junatiedot club in junat.Values)
+                {
+                    muuttuja += ("ID: " + club.Junaid + " Nimi: " + club.JunaNimi + " PVM: " + club.JunaPVM + "\n");
+
                 }
                 textBlock.Text = "OK " + muuttuja;
             }
@@ -86,6 +79,23 @@ namespace evapp
                 textBlock.Text = muuttuja + " " + kekke;
             }
 
+        }
+
+        public void Results()
+        {
+            string lähtö = "'" + asemat.FirstOrDefault(x => x.Value.Contains(comboBox.SelectedValue.ToString())).Key + "'";
+            string pääte = "'" + asemat.FirstOrDefault(x => x.Value.Contains(comboBox1.SelectedValue.ToString())).Key + "'";
+            databaseMYSQL database = new databaseMYSQL("localhost", 3306, "root", "", "test");
+            string kekke = database.GetTrains("SELECT Lahtoaika, Saapumisaika FROM Junavuoro WHERE Lahtoasema = " + lähtö + " AND Paateasema = " + pääte + "", ref junat);
+            // jäi kesken, en edes tiedä meneekö noin :D
+        }
+        private void Search()
+        {
+            lahtoasemabox.Text = comboBox.SelectedValue.ToString();
+            paateasemabox.Text = comboBox1.SelectedValue.ToString();
+            string date = pvmvalinta.Date.ToString();
+            date = date.Substring(0, 10);
+            textBlock.Text = date;
         }
 
     }

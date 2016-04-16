@@ -28,6 +28,16 @@ namespace evapp
         public string Asemaid { get; set; }
         public string Asemanimi { get; set; }
     }
+    public class Junavuoro
+    {
+        public string JunavuoroID { get; set; }
+        public string Lahtoaika { get; set; }
+        public string Saapumisaika { get; set; }
+        public string JunaID { get; set; }
+        public string Lahtoasema { get; set; }
+        public string Paateasema { get; set; }
+    }
+
     public class databaseMYSQL
     {
         public MySqlConnection connection = new MySqlConnection();
@@ -68,6 +78,31 @@ namespace evapp
                     result.Close();
                     connection.Close();
                 
+                return "OK";
+            }
+            catch (Exception ex)
+            {
+                return (ex.Message + " ");
+            }
+        }
+
+        public string GetRoutes(string dbquery, ref Dictionary<int, Junavuoro> vuorot)
+        {
+            MySqlCommand query = connection.CreateCommand();
+            query.CommandText = dbquery;
+
+            try
+            {
+                MySqlDataReader result = query.ExecuteReader();
+                while (result.Read())
+                {
+                    vuorot.Add(int.Parse(result["JunavuoroID"].ToString()), new Junavuoro { JunavuoroID = result["JunavuoroID"].ToString(),
+                        Lahtoaika = result["Lahtoaika"].ToString(), Saapumisaika = result["Saapumisaika"].ToString(), JunaID = result["JunaID"].ToString(),
+                        Lahtoasema = result["Lahtoasema"].ToString(), Paateasema = result["Paateasema"].ToString() });
+                }
+                result.Close();
+                connection.Close();
+
                 return "OK";
             }
             catch (Exception ex)
