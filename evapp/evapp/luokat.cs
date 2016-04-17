@@ -110,6 +110,28 @@ namespace evapp
                 return (ex.Message + " ");
             }
         }
+        public string GetStations(string dbquery, ref Dictionary<string, string> asemat) // Junavuorojen haku tietokannasta ja lisääminen dictionaryyn
+        {
+            MySqlCommand query = connection.CreateCommand();
+            query.CommandText = dbquery;
+
+            try
+            {
+                MySqlDataReader result = query.ExecuteReader();
+                while (result.Read())
+                {
+                    asemat.Add(result["Asematunnus"].ToString(), result["Asemanimi"].ToString());
+                }
+                result.Close();
+                connection.Close();
+
+                return "OK";
+            }
+            catch (Exception ex)
+            {
+                return (ex.Message + " ");
+            }
+        }
     }
 
 

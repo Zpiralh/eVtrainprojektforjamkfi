@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient.RT;
+﻿ using MySql.Data.MySqlClient.RT;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -35,18 +35,21 @@ namespace evapp
         {
             this.InitializeComponent();
 
-            asemat.Add("HKI", "Helsinki rautatieasema");
-            asemat.Add("JKL", "Jyväskylä matkakeskus");
-            asemat.Add("OUL", "Oulun rautatieasema");
-            asemat.Add("TRE", "Tampereen rautatieasema");
-            asemat.Add("TKU", "Turun rautatieasema");
 
+            //haetaan asemat Tietokannasta
+
+            string AsemaPalautus = database.GetStations("SELECT * FROM Asema;",ref asemat);
+            if(AsemaPalautus == "OK") { 
             foreach (string value in asemat.Values)
             {
                 comboBox.Items.Add(value);
                 comboBox1.Items.Add(value);
             }
-            
+            }
+            else
+            {
+                //Virheilmoitus Toteutus tapa kehitetään jossain kohtaa
+            }
         }
         public string muuttuja = " ";
 
