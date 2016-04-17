@@ -31,9 +31,11 @@
         <Grid HorizontalAlignment="Left" Height="378" Margin="10,252,10,0" VerticalAlignment="Top" Width="340">
             <TextBlock x:Name="lahtoasemabox" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="130" TextAlignment="Center"/>
             <TextBlock x:Name="paateasemabox" HorizontalAlignment="Left" Margin="200,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="130" TextAlignment="Center"/>
-            <TextBlock x:Name="lahtoaikabox" HorizontalAlignment="Left" Margin="10,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
+            <TextBlock x:Name="lahtoaikabox" HorizontalAlignment="Left" Margin="10,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
             <TextBlock x:Name="paateaikabox" HorizontalAlignment="Left" Margin="200,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
-            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,129,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="95" Width="320"/>
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="95" Width="320"/>
+            <TextBlock x:Name="pvmboksi" HorizontalAlignment="Left" Margin="10,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
+            <TextBlock x:Name="hintaboksi" HorizontalAlignment="Left" Margin="200,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="53" Margin="10,10,10,0" VerticalAlignment="Top" Width="350">
             <TextBlock x:Name="otsikko" HorizontalAlignment="Left" TextWrapping="Wrap" Text="eV" VerticalAlignment="Top" Height="43" Width="340" TextAlignment="Center" Foreground="#FF67D819" FontSize="32" FontFamily="Broadway" Margin="0,10,0,0"/>

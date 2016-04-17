@@ -86,7 +86,7 @@ namespace evapp
             }
         }
 
-        public string GetRoutes(string dbquery, ref Dictionary<int, Junavuoro> vuorot)
+        public string GetRoutes(string dbquery, ref Dictionary<int, Junavuoro> vuorot) // Junavuorojen haku tietokannasta ja lisääminen dictionaryyn
         {
             MySqlCommand query = connection.CreateCommand();
             query.CommandText = dbquery;
