@@ -7,15 +7,6 @@ using MySql.Data.MySqlClient;
 
 namespace evapp
 {
-    /*
-    class Lippu
-    {
-        public string id;
-        public string petunimi;
-        public string psukunimi;
-        public string plahtoasema;
-        public string ppaateasema;
-    }*/
     public class Junatiedot
     {
         //testausta vain
@@ -36,6 +27,18 @@ namespace evapp
         public string JunaID { get; set; }
         public string Lahtoasema { get; set; }
         public string Paateasema { get; set; }
+    }
+    public class Lipputiedot
+    {
+        public string JunavuoroID { get; set; }
+        public string Lähtöasema { get; set; }
+        public string Pääteasema { get; set; }
+        public string Lähtöaika { get; set; }
+        public string Pääteaika { get; set; }
+        public string hinta { get; set; }
+        public int vuosi { get; set; }
+        public int kuukausi { get; set; }
+        public int päivä { get; set; }
     }
 
     public class databaseMYSQL
@@ -110,7 +113,7 @@ namespace evapp
                 return (ex.Message + " ");
             }
         }
-        public string GetStations(string dbquery, ref Dictionary<string, string> asemat) // Junavuorojen haku tietokannasta ja lisääminen dictionaryyn
+        public string GetStations(string dbquery, ref Dictionary<string, string> asemat) // Asemien haku tietokannasta ja lisääminen dictionaryyn
         {
             MySqlCommand query = connection.CreateCommand();
             query.CommandText = dbquery;

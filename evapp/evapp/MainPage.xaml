@@ -14,32 +14,10 @@
                 <GradientStop Color="#FF63E625" Offset="0.663"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <DatePicker x:Name="pvmvalinta" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Width="340" Background="#FF71A822"/>
-        <Grid Height="95" Margin="10,105,185,0" VerticalAlignment="Top">
-
-            <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="145" Background="#FF71A822">
-            </ComboBox>
-            <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="0,10,0,0" TextWrapping="Wrap" Text="Lähtöasema" VerticalAlignment="Top" Height="30" Width="165" TextAlignment="Center" Foreground="#FF67D819"/>
-        </Grid>
-        <Grid HorizontalAlignment="Left" Height="95" Margin="180,105,0,0" VerticalAlignment="Top" Width="165">
-            <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="0,10,0,0" TextWrapping="Wrap" Text="Pääteasema" VerticalAlignment="Top" Height="30" Width="165" TextAlignment="Center" Foreground="#FF67D819"/>
-            <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="145" Background="#FF71A822"/>
-        </Grid>
-        <Grid HorizontalAlignment="Left" Height="52" Margin="10,195,0,0" VerticalAlignment="Top" Width="340">
-            <Button x:Name="button" Content="Hae" HorizontalAlignment="Stretch" Margin="128,10,128,10" VerticalAlignment="Stretch" Background="#FF71A822" Click="button_Click"/>
-        </Grid>
-        <Grid HorizontalAlignment="Left" Height="378" Margin="10,252,10,0" VerticalAlignment="Top" Width="340">
-            <TextBlock x:Name="lahtoasemabox" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="130" TextAlignment="Center"/>
-            <TextBlock x:Name="paateasemabox" HorizontalAlignment="Left" Margin="200,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="130" TextAlignment="Center"/>
-            <TextBlock x:Name="lahtoaikabox" HorizontalAlignment="Left" Margin="10,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
-            <TextBlock x:Name="paateaikabox" HorizontalAlignment="Left" Margin="200,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
-            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="95" Width="320"/>
-            <TextBlock x:Name="pvmboksi" HorizontalAlignment="Left" Margin="10,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
-            <TextBlock x:Name="hintaboksi" HorizontalAlignment="Left" Margin="200,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
-        </Grid>
-        <Grid HorizontalAlignment="Left" Height="53" Margin="10,10,10,0" VerticalAlignment="Top" Width="350">
+        <Grid HorizontalAlignment="Left" Height="81" Margin="0,10,0,0" VerticalAlignment="Top" Width="360">
             <TextBlock x:Name="otsikko" HorizontalAlignment="Left" TextWrapping="Wrap" Text="eV" VerticalAlignment="Top" Height="43" Width="340" TextAlignment="Center" Foreground="#FF67D819" FontSize="32" FontFamily="Broadway" Margin="0,10,0,0"/>
+            <TextBlock x:Name="otsikko2" HorizontalAlignment="Left" Margin="125,51,0,0" TextWrapping="Wrap" Text="Rautatiet" VerticalAlignment="Top" Width="92" TextAlignment="Center" Foreground="#FF67D819" FontFamily="Gill Sans MT"/>
+            <Button x:Name="gotoSearchbutton" Content="Haku" HorizontalAlignment="Left" Margin="275,43,0,0" VerticalAlignment="Top" Width="75" Background="#FF71A822" Click="button_Click"/>
         </Grid>
-
     </Grid>
 </Page>
