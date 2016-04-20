@@ -27,7 +27,7 @@
         	<Run Text="Puh.numero :"/>
         	<Run Text=" xxx-xxxxxx"/>
         </TextBlock>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="136" Margin="90,375,0,0" VerticalAlignment="Top" Width="173" Source="juna.jpg"/>
+        <Image x:Name="image" Height="186" Margin="90,278,90,0" VerticalAlignment="Top" Source="Assets/Junalogo.PNG" NineGrid="0" Opacity="0.3" />
 
     </Grid>
 </Page>
