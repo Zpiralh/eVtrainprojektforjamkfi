@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <Grid RenderTransformOrigin="0.496,0.442">
+    <Grid RenderTransformOrigin="0.481,0.604">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="Black" Offset="0"/>
@@ -27,8 +27,7 @@
         	<Run Text="Puh.numero :"/>
         	<Run Text=" xxx-xxxxxx"/>
         </TextBlock>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="164" Margin="90,227,0,0" VerticalAlignment="Top" Width="210" Source="juna.png"/>
-
+        <Image x:Name="image" HorizontalAlignment="Left" Height="136" Margin="90,375,0,0" VerticalAlignment="Top" Width="173" Source="juna.jpg"/>
 
     </Grid>
 </Page>
