@@ -5,6 +5,4 @@ Kanta ei ole ihan valmis... Lisätään vielä tarvittavat tietotyypit ni se alk
 Valmiit tääl: http://student.labranet.jamk.fi/~K2065/
 
 
-13.4.2016 - 02:33 - Sain MySQL ongelmat C#:n kanssa ratkaistua. Nyt vaan pitää ruveta rakentaa sitä softaa  / en vielä ole päivittänyt softaa gittiin pitää vielä siivota vähän koodia :) - Niko
-
-13.4.2016 - 13:04 - uusin koodi laitettu githubiin. - Niko
+- Tietokanta yhteydet rakennettu ja testattu toimii 5/5 joten kodailua vaille valmista
