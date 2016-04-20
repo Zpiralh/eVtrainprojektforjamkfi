@@ -68,25 +68,6 @@ namespace evapp
 
         }
 
-        private void ListTrains()
-        {
-            string kekke = database.GetTrains("SELECT * FROM Juna", ref junat);
-            //varmistus juttuja vielä kun haetaan junat ei junavuoroja (tietokannan ongelmien selvitystä oli)
-            if (kekke == "OK")
-            {
-                foreach (Junatiedot club in junat.Values)
-                {
-                    muuttuja += ("ID: " + club.Junaid + " Nimi: " + club.JunaNimi + " PVM: " + club.JunaPVM + "\n");
-
-                }
-                textBlock.Text = "OK " + muuttuja;
-            }
-            else
-            {
-                textBlock.Text = muuttuja + " " + kekke;
-            }
-
-        }
 
         public void Results()  //Aikojen haku dictionarysta
         {
@@ -108,6 +89,24 @@ namespace evapp
             }
         }
 
+        /*
+        Löysin miten saa luotua nappeja ohjelmallisesti mutta ongelma on nyt se että miten sitä saa painettua ja siirrettyä tietoa toiseen ikkunaan ja että miten saisi tekstiä ja buttonin samalle riville
+        Alla löytämäni koodi joka luo buttonin stackpaneeliin:
+
+                for (int i = 0; i < 10; i++)
+            {
+                //create button
+                Button btn = new Button();
+                btn.Content = "buttoniolen";
+                btn.Name = "Juna " + i;
+                btn.Margin = new Thickness(0, 0, 0, 12);
+                stackPanel.Children.Add(btn);
+            } 
+
+            
+            
+            
+        */
         private void Searchinfo() //Muiden tietojen haku ja tulsoten sijoittelu
         {
             lahtoasemabox.Text = comboBox.SelectedValue.ToString();
