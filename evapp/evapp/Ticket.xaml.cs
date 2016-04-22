@@ -23,7 +23,7 @@ namespace evapp
     public sealed partial class Ticket : Page
     {
         databaseMYSQL database = new databaseMYSQL("localhost", 3306, "root", "", "test");
-        //int vuoroid;
+        int vuoroid;
         //double price;
         List<int> IDlist = new List<int>();
 
@@ -83,14 +83,14 @@ namespace evapp
             else
             {
                 huomBox.Text = "Hyvä äijä";
-                /*int kpl = int.Parse(kplBox.SelectedValue.ToString());
+                int kpl = int.Parse(kplBox.SelectedValue.ToString());
                 string enimi = "'" + enimiBox.Text + "'";
                 string snimi = "'" + snimiBox.Text + "'";
                 string lippuluokka = "'" + lippuluokkaBox.SelectedValue.ToString() + "'";
-                string kukku = database.InsertData("INSERT INTO Asiakas (Etunimi, Sukunimi) VALUES (" + enimi + ", " + snimi + ");");
+                database.InsertData("INSERT INTO Asiakas (Etunimi, Sukunimi) VALUES (" + enimi + ", " + snimi + ");");
                 string kekke = database.GetCustomerid("SELECT AsiakasID FROM Asiakas WHERE Etunimi = " + enimi + " AND Sukunimi = " + snimi + ";", ref IDlist);
                 int customerid = IDlist.Max();
-                string kikki = database.InsertData("INSERT INTO Lippu (Junavuoro_JunavuoroID, Asiakas_AsiakasID, Lippuluokka) VALUES (" + vuoroid + ", " + customerid + ", " + lippuluokka + ");"); */
+                database.InsertData("INSERT INTO Lippu (Junavuoro_JunavuoroID, Asiakas_AsiakasID, Lippuluokka) VALUES (" + vuoroid + ", " + customerid + ", " + lippuluokka + ");");
             }
 
 

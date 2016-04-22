@@ -12,7 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
+using MySql.Data.MySqlClient;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace evapp
@@ -25,7 +25,7 @@ namespace evapp
         public Dictionary<int, Junatiedot> junat = new Dictionary<int, Junatiedot>();
         public Dictionary<string, string> asemat = new Dictionary<string, string>();
         public Dictionary<int, Junavuoro> vuorot = new Dictionary<int, Junavuoro>();
-        databaseMYSQL database = new databaseMYSQL("localhost", 3306, "root", "", "test");
+        public databaseMYSQL database = new databaseMYSQL("localhost", 3306, "root", "", "test");
 
 
         public Search()
@@ -85,7 +85,7 @@ namespace evapp
             }
             else
             {
-                textBlock.Text = "Haku epäonnistui.";
+                textBlock.Text = "Haku epäonnistui." + kekke;
             }
         }
 

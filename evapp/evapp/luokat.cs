@@ -42,7 +42,6 @@ namespace evapp
     public class databaseMYSQL
     {
         public MySqlConnection connection = new MySqlConnection();
-
         public databaseMYSQL(String hostname, int port, String username, String password, String database)
         {
             System.Text.EncodingProvider ppp;
@@ -63,30 +62,6 @@ namespace evapp
             }
 
         }
-        //esimerkki että miten haetaan kannasta Junat (EI JUNAVUOROJA)
-        public string GetTrains(string dbquery, ref Dictionary<int, Junatiedot> junat)
-        {
-            MySqlCommand query = connection.CreateCommand();
-            query.CommandText = dbquery;
-
-            try
-            {
-                MySqlDataReader result = query.ExecuteReader();
-                    while (result.Read())
-                    {
-                        junat.Add(int.Parse(result["JunaID"].ToString()), new Junatiedot { Junaid = result["JunaID"].ToString(), JunaNimi = result["Junatyyppi"].ToString(), JunaPVM = result["KayttoonottoPvm"].ToString() });
-                    }
-                    result.Close();
-                    connection.Close();
-                
-                return "OK";
-            }
-            catch (Exception ex)
-            {
-                return (ex.Message + " ");
-            }
-        }
-
         public string GetRoutes(string dbquery, ref Dictionary<int, Junavuoro> vuorot) // Junavuorojen haku tietokannasta ja lisääminen dictionaryyn
         {
             MySqlCommand query = connection.CreateCommand();
@@ -102,12 +77,12 @@ namespace evapp
                         Lahtoasema = result["Lahtoasema"].ToString(), Paateasema = result["Paateasema"].ToString() });
                 }
                 result.Close();
-                connection.Close();
 
                 return "OK";
             }
             catch (Exception ex)
             {
+
                 return (ex.Message + " ");
             }
         }
@@ -124,18 +99,29 @@ namespace evapp
                     asemat.Add(result["Asematunnus"].ToString(), result["Asemanimi"].ToString());
                 }
                 result.Close();
-                connection.Close();
+
 
                 return "OK";
             }
             catch (Exception ex)
             {
+                connection.Close();
                 return (ex.Message + " ");
             }
         }
-        public string InsertData(string dbquery)
+        public void InsertData(string dbquery)
+
         {
-            return "OK";
+            MySqlCommand query = connection.CreateCommand();
+            query.CommandText = dbquery;
+            try { 
+            MySqlDataReader result = query.ExecuteReader();
+           result.Close();
+            } catch
+            {
+
+            }
+
         }
         public string GetCustomerid(string dbquery, ref List<int> IDlist) // AsiakasID:n haku
         {
@@ -150,7 +136,6 @@ namespace evapp
                     IDlist.Add(int.Parse(result["AsiakasID"].ToString()));
                 }
                 result.Close();
-                connection.Close();
 
                 return "OK";
             }
