@@ -36,9 +36,7 @@ namespace evapp
         public string Lähtöaika { get; set; }
         public string Pääteaika { get; set; }
         public string hinta { get; set; }
-        public int vuosi { get; set; }
-        public int kuukausi { get; set; }
-        public int päivä { get; set; }
+        public string pvm { get; set; }
     }
 
     public class databaseMYSQL
@@ -124,6 +122,32 @@ namespace evapp
                 while (result.Read())
                 {
                     asemat.Add(result["Asematunnus"].ToString(), result["Asemanimi"].ToString());
+                }
+                result.Close();
+                connection.Close();
+
+                return "OK";
+            }
+            catch (Exception ex)
+            {
+                return (ex.Message + " ");
+            }
+        }
+        public string InsertData(string dbquery)
+        {
+            return "OK";
+        }
+        public string GetCustomerid(string dbquery, ref List<int> IDlist) // AsiakasID:n haku
+        {
+            MySqlCommand query = connection.CreateCommand();
+            query.CommandText = dbquery;
+
+            try
+            {
+                MySqlDataReader result = query.ExecuteReader();
+                while (result.Read())
+                {
+                    IDlist.Add(int.Parse(result["AsiakasID"].ToString()));
                 }
                 result.Close();
                 connection.Close();

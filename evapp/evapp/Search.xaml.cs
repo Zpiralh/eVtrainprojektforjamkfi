@@ -27,13 +27,14 @@ namespace evapp
         public Dictionary<int, Junavuoro> vuorot = new Dictionary<int, Junavuoro>();
         databaseMYSQL database = new databaseMYSQL("localhost", 3306, "root", "", "test");
 
+
         public Search()
         {
             this.InitializeComponent();
             buyButton.Visibility = Visibility.Collapsed;
-            //haetaan asemat Tietokannasta
 
-            string AsemaPalautus = database.GetStations("SELECT * FROM Asema;", ref asemat);
+
+            string AsemaPalautus = database.GetStations("SELECT * FROM Asema;", ref asemat);             //haetaan asemat Tietokannasta
             if (AsemaPalautus == "OK")
             {
                 foreach (string value in asemat.Values)
@@ -60,9 +61,8 @@ namespace evapp
             }
             else
             {
-                //ListTrains();
                 Searchinfo();
-                //Results();
+                Results();
                 buyButton.Visibility = Visibility.Visible;
             }
 
@@ -73,14 +73,14 @@ namespace evapp
         {
             string lähtö = "'" + asemat.FirstOrDefault(x => x.Value.Contains(comboBox.SelectedValue.ToString())).Key + "'"; //Helsingin rautatieasema = 'HKI', haetaan tietokannasta asematunnuksella
             string pääte = "'" + asemat.FirstOrDefault(x => x.Value.Contains(comboBox1.SelectedValue.ToString())).Key + "'";
+            vuorot.Clear();
             string kekke = database.GetRoutes("SELECT * FROM Junavuoro WHERE Lahtoasema = " + lähtö + " AND Paateasema = " + pääte + ";", ref vuorot); // tietokannalle lähetettävä query
             if (kekke == "OK")
             {
-                vuorot.Clear();
                 foreach (Junavuoro vuoro in vuorot.Values)
                 {
                     lahtoaikabox.Text = vuoro.Lahtoaika;
-                    paateasemabox.Text = vuoro.Saapumisaika;
+                    paateaikabox.Text = vuoro.Saapumisaika;
                 }
             }
             else
@@ -107,7 +107,7 @@ namespace evapp
             
             
         */
-        private void Searchinfo() //Muiden tietojen haku ja tulsoten sijoittelu
+        private void Searchinfo() //Muiden tietojen haku ja tulosten sijoittelu
         {
             lahtoasemabox.Text = comboBox.SelectedValue.ToString();
             paateasemabox.Text = comboBox1.SelectedValue.ToString();
@@ -130,8 +130,7 @@ namespace evapp
                 price = price * 1.5;
             }
             pvmboksi.Text = day + "." + month + "." + year;
-            hintaboksi.Text = price + " €";
-
+            hintaboksi.Text = price + "  €";
 
         }
 
@@ -142,7 +141,18 @@ namespace evapp
 
         private void buyButton_Click(object sender, RoutedEventArgs e)
         {
-
-        }
+            /*Lipputiedot lippu = new Lipputiedot
+            {
+                JunavuoroID = vuorot.Keys.ToString(),
+                Lähtöasema = lahtoasemabox.Text,
+                Pääteasema = paateasemabox.Text,
+                Lähtöaika = lahtoaikabox.Text,
+                Pääteaika = paateaikabox.Text,
+                hinta = hintaboksi.Text.Substring(0, 4),
+                pvm = pvmboksi.Text
+            };
+            this.Frame.Navigate(typeof(Ticket), lippu); */
+            this.Frame.Navigate(typeof(Ticket));
+        } 
     }
 }
