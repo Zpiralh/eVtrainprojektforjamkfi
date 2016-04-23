@@ -106,13 +106,17 @@ namespace evapp
 
         private void confirmationButton_Click(object sender, RoutedEventArgs e)
         {
+            int kpl = int.Parse(kplBox.SelectedValue.ToString());
             string enimi = "'" + enimiBox.Text + "'";
             string snimi = "'" + snimiBox.Text + "'";
             string lippuluokka = "'" + lippuluokkaBox.SelectedValue.ToString() + "'";
             database.InsertData("INSERT INTO Asiakas (Etunimi, Sukunimi) VALUES (" + enimi + ", " + snimi + ");");
             string kekke = database.GetCustomerid("SELECT AsiakasID FROM Asiakas WHERE Etunimi = " + enimi + " AND Sukunimi = " + snimi + ";", ref IDlist);
             int customerid = IDlist.Max();
-            database.InsertData("INSERT INTO Lippu (Junavuoro_JunavuoroID, Asiakas_AsiakasID, Lippuluokka) VALUES (" + vuoroid + ", " + customerid + ", " + lippuluokka + ");");
+            for (int i = 0; i < kpl; i++)
+            {
+                database.InsertData("INSERT INTO Lippu (Junavuoro_JunavuoroID, Asiakas_AsiakasID, Lippuluokka) VALUES (" + vuoroid + ", " + customerid + ", " + lippuluokka + ");");
+            }
             this.Frame.Navigate(typeof(Confirmation));
         }
     }
