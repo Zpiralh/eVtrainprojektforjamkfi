@@ -22,5 +22,6 @@
         <Grid HorizontalAlignment="Left" Height="100" Margin="10,540,0,0" VerticalAlignment="Top" Width="340">
             <Button x:Name="button" Content="Ota yhteyttä" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="156" Click="button_Click_1"/>
         </Grid>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="97,144,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="49" Width="138"/>
     </Grid>
 </Page>

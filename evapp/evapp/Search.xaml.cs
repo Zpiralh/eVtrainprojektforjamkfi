@@ -25,6 +25,7 @@ namespace evapp
         public Dictionary<string, string> asemat = new Dictionary<string, string>();
         public Dictionary<int, Junavuoro> vuorot = new Dictionary<int, Junavuoro>();
         public databaseMYSQL database = new databaseMYSQL("localhost", 3306, "root", "", "test");
+        string vuoroid;
 
 
         public Search()
@@ -143,9 +144,13 @@ namespace evapp
 
         private void buyButton_Click(object sender, RoutedEventArgs e)
         {
+            foreach (int id in vuorot.Keys)
+            {
+                vuoroid = id.ToString();
+            }
             Lipputiedot lippu = new Lipputiedot
             {
-                JunavuoroID = vuorot.Keys.ToString(),
+                JunavuoroID = vuoroid,
                 Lähtöasema = lahtoasemabox.Text,
                 Pääteasema = paateasemabox.Text,
                 Lähtöaika = lahtoaikabox.Text,
@@ -154,7 +159,6 @@ namespace evapp
                 pvm = pvmboksi.Text
             };
             this.Frame.Navigate(typeof(Ticket), lippu);
-            this.Frame.Navigate(typeof(Ticket));
         } 
     }
 }
