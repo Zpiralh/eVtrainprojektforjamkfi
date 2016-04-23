@@ -19,25 +19,27 @@
             <TextBlock x:Name="otsikko2" HorizontalAlignment="Center" Margin="0,51,0,0" TextWrapping="Wrap" Text="Rautatiet" VerticalAlignment="Top" Width="92" TextAlignment="Center" Foreground="#FF67D819" FontFamily="Gill Sans MT"/>
             <Button x:Name="backButton" Content="Takaisin" HorizontalAlignment="Left" Margin="0,43,0,6" VerticalAlignment="Stretch" Width="75" Background="#FF71A822" Click="backButton_Click"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="448" Margin="0,96,0,0" VerticalAlignment="Top" Width="360">
+        <Grid HorizontalAlignment="Left" Height="412" Margin="0,96,0,0" VerticalAlignment="Top" Width="360">
             <TextBlock x:Name="lahtoasemabox" HorizontalAlignment="Left" Margin="20,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="130" TextAlignment="Center"/>
             <TextBlock x:Name="paateasemabox" HorizontalAlignment="Left" Margin="210,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="130" TextAlignment="Center"/>
             <TextBlock x:Name="lahtoaikabox" HorizontalAlignment="Left" Margin="20,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
             <TextBlock x:Name="paateaikabox" HorizontalAlignment="Left" Margin="210,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
             <TextBlock x:Name="pvmboksi" HorizontalAlignment="Left" Margin="20,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
             <TextBlock x:Name="hintaboksi" HorizontalAlignment="Left" Margin="210,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
-            <Button x:Name="buyButton" Content="Varaa liput" HorizontalAlignment="Center" VerticalAlignment="Top" Width="101" Margin="0,340,0,0" Click="buyButton_Click"/>
+            <Button x:Name="buyButton" Content="Ok" HorizontalAlignment="Center" VerticalAlignment="Top" Width="101" Margin="0,320,0,0" Click="buyButton_Click"/>
             <TextBox x:Name="enimiBox" HorizontalAlignment="Left" Margin="20,171,0,0" TextWrapping="Wrap" Text="Etunimi" VerticalAlignment="Top" Width="130"/>
             <TextBox x:Name="snimiBox" HorizontalAlignment="Left" Margin="210,171,0,0" TextWrapping="Wrap" Text="Sukunimi" VerticalAlignment="Top" Width="130"/>
             <ComboBox x:Name="kplBox" HorizontalAlignment="Left" Margin="20,242,0,0" VerticalAlignment="Top" Width="130" HorizontalContentAlignment="Right"/>
             <ComboBox x:Name="lippuluokkaBox" HorizontalAlignment="Left" Margin="210,242,0,0" VerticalAlignment="Top" Width="130" HorizontalContentAlignment="Right"/>
             <TextBlock x:Name="kplBlock" HorizontalAlignment="Left" Margin="150,247,0,0" TextWrapping="Wrap" Text="Kpl" VerticalAlignment="Top"/>
             <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="260,222,0,0" TextWrapping="Wrap" Text="Lippuluokka" VerticalAlignment="Top"/>
-            <TextBlock x:Name="loppuhintaBox" HorizontalAlignment="Center" Margin="0,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" />
-            <TextBlock x:Name="huomBox" HorizontalAlignment="Center" Margin="0,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" TextAlignment="Center" Height="66"/>
+            <TextBlock x:Name="huomBox" HorizontalAlignment="Center" Margin="121,352,121,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" TextAlignment="Center" Height="50"/>
         </Grid>
+        <Grid HorizontalAlignment="Left" Height="117" Margin="10,513,0,0" VerticalAlignment="Top" Width="340">
+            <TextBlock x:Name="loppuhintaBox" HorizontalAlignment="Center" Margin="0,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="35" Width="198" TextAlignment="Center"/>
+            <Button x:Name="confirmationButton" Content="Varaa liput" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" Click="confirmationButton_Click"/>
 
-
+        </Grid>
 
 
 

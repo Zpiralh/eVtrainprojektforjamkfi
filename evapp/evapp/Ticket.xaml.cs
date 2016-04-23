@@ -32,7 +32,6 @@ namespace evapp
         {
             this.InitializeComponent();
             IDlist.Clear();
-            int kpl = int.Parse(kplBox.SelectedValue.ToString());
             kplBox.Items.Add(1);
             kplBox.Items.Add(2); 
             kplBox.Items.Add(3); 
@@ -47,18 +46,6 @@ namespace evapp
             lippuluokkaBox.Items.Add("Varusmies");
             lippuluokkaBox.Items.Add("Eläkeläinen");
             lippuluokkaBox.Items.Add("Lapsi");
-
-            if (lippuluokkaBox.SelectedValue.ToString() == "Aikuinen")
-            {
-                price = price * kpl;
-            }
-            else
-            {
-                price = price * kpl * 0.75;
-            }
-            loppuhintaBox.Text = price.ToString();
-            
-
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
@@ -83,16 +70,16 @@ namespace evapp
             }
             else
             {
-                huomBox.Text = "Pyyntöäsi käsitellään";
                 int kpl = int.Parse(kplBox.SelectedValue.ToString());
-                string enimi = "'" + enimiBox.Text + "'";
-                string snimi = "'" + snimiBox.Text + "'";
-                string lippuluokka = "'" + lippuluokkaBox.SelectedValue.ToString() + "'";
-                database.InsertData("INSERT INTO Asiakas (Etunimi, Sukunimi) VALUES (" + enimi + ", " + snimi + ");");
-                string kekke = database.GetCustomerid("SELECT AsiakasID FROM Asiakas WHERE Etunimi = " + enimi + " AND Sukunimi = " + snimi + ";", ref IDlist);
-                int customerid = IDlist.Max();
-                database.InsertData("INSERT INTO Lippu (Junavuoro_JunavuoroID, Asiakas_AsiakasID, Lippuluokka) VALUES (" + vuoroid + ", " + customerid + ", " + lippuluokka + ");");
-                this.Frame.Navigate(typeof(Confirmation));
+                if (lippuluokkaBox.SelectedValue.ToString() == "Aikuinen")
+                {
+                    price = price * kpl;
+                }
+                else
+                {
+                    price = price * kpl * 0.75;
+                }
+                loppuhintaBox.Text = "Total: " + price.ToString() + " €";
             }
 
 
@@ -115,6 +102,18 @@ namespace evapp
                 lahtoasemabox.Text = "Jotain meni pieleen, lataus epäonnistui";
             }
             base.OnNavigatedTo(e);
+        }
+
+        private void confirmationButton_Click(object sender, RoutedEventArgs e)
+        {
+            string enimi = "'" + enimiBox.Text + "'";
+            string snimi = "'" + snimiBox.Text + "'";
+            string lippuluokka = "'" + lippuluokkaBox.SelectedValue.ToString() + "'";
+            database.InsertData("INSERT INTO Asiakas (Etunimi, Sukunimi) VALUES (" + enimi + ", " + snimi + ");");
+            string kekke = database.GetCustomerid("SELECT AsiakasID FROM Asiakas WHERE Etunimi = " + enimi + " AND Sukunimi = " + snimi + ";", ref IDlist);
+            int customerid = IDlist.Max();
+            database.InsertData("INSERT INTO Lippu (Junavuoro_JunavuoroID, Asiakas_AsiakasID, Lippuluokka) VALUES (" + vuoroid + ", " + customerid + ", " + lippuluokka + ");");
+            this.Frame.Navigate(typeof(Confirmation));
         }
     }
 }

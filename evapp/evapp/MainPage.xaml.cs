@@ -25,17 +25,9 @@ namespace evapp
 
     public sealed partial class MainPage : Page
     {
-        Dictionary<int, string> asd = new Dictionary<int, string>();
         public MainPage()
         {
             this.InitializeComponent();
-            asd.Add(1, "asdasd");
-            asd.Add(2, "dsadsa");
-            foreach (int id in asd.Keys)
-            {
-                string vuoroid = id.ToString();
-                textBlock.Text = vuoroid;
-            }
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
