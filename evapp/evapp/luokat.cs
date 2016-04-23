@@ -23,12 +23,12 @@ namespace evapp
     }
     public class Lipputiedot
     {
-        public string JunavuoroID { get; set; }
+        public int JunavuoroID { get; set; }
         public string Lähtöasema { get; set; }
         public string Pääteasema { get; set; }
         public string Lähtöaika { get; set; }
         public string Pääteaika { get; set; }
-        public string hinta { get; set; }
+        public double hinta { get; set; }
         public string pvm { get; set; }
     }
 

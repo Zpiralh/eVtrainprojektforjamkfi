@@ -18,15 +18,15 @@ using MySql.Data.MySqlClient;
 namespace evapp
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Junavuorojen hakusivu
     /// </summary>
     public sealed partial class Search : Page
     {
         public Dictionary<string, string> asemat = new Dictionary<string, string>();
         public Dictionary<int, Junavuoro> vuorot = new Dictionary<int, Junavuoro>();
         public databaseMYSQL database = new databaseMYSQL("localhost", 3306, "root", "", "test");
-        string vuoroid;
-
+        int vuoroid;
+        double price;
 
         public Search()
         {
@@ -45,7 +45,7 @@ namespace evapp
             }
             else
             {
-                //Virheilmoitus Toteutus tapa kehitetään jossain kohtaa
+                lahtoasemabox.Text = "Yhteys tietokantaan epäonnistui";
             }
         }
         public string muuttuja = " ";
@@ -66,9 +66,6 @@ namespace evapp
                 Results();
                 buyButton.Visibility = Visibility.Visible;
             }
-
-            
-
         }
 
 
@@ -119,7 +116,6 @@ namespace evapp
             int day = pvmvalinta.Date.Day;
             string lähtöasema = asemat.FirstOrDefault(x => x.Value.Contains(comboBox.SelectedValue.ToString())).Key;
             string pääteasema = asemat.FirstOrDefault(x => x.Value.Contains(comboBox1.SelectedValue.ToString())).Key;
-            double price;
             if ((lähtöasema == "HKI" && pääteasema == "OUL") || (lähtöasema == "OUL" && pääteasema == "HKI"))
             {
                 price = 15;
@@ -146,7 +142,7 @@ namespace evapp
         {
             foreach (int id in vuorot.Keys)
             {
-                vuoroid = id.ToString();
+                vuoroid = id;
             }
             Lipputiedot lippu = new Lipputiedot
             {
@@ -155,7 +151,7 @@ namespace evapp
                 Pääteasema = paateasemabox.Text,
                 Lähtöaika = lahtoaikabox.Text,
                 Pääteaika = paateaikabox.Text,
-                hinta = hintaboksi.Text.Substring(0, 4),
+                hinta = price,
                 pvm = pvmboksi.Text
             };
             this.Frame.Navigate(typeof(Ticket), lippu);

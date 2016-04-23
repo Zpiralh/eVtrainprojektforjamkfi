@@ -18,7 +18,7 @@ using Windows.UI.Xaml.Navigation;
 namespace evapp
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Lipunvaraussivu
     /// </summary>
     public sealed partial class Ticket : Page
     {
@@ -107,8 +107,8 @@ namespace evapp
                 lahtoaikabox.Text = lippu.Lähtöaika;
                 paateaikabox.Text = lippu.Pääteaika;
                 pvmboksi.Text = lippu.pvm;
-                vuoroid = int.Parse(lippu.JunavuoroID);
-                price = double.Parse(lippu.hinta);
+                vuoroid = lippu.JunavuoroID;
+                price = lippu.hinta;
             }
             else
             {
