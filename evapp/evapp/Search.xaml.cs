@@ -53,17 +53,20 @@ namespace evapp
         private void button_Click(object sender, RoutedEventArgs e)
         {
             lahtoasemabox.Text = paateasemabox.Text = lahtoaikabox.Text = paateaikabox.Text = pvmboksi.Text = hintaboksi.Text = textBlock.Text = String.Empty;
-            if (comboBox.SelectedValue == comboBox1.SelectedValue || pvmvalinta.Date < DateTime.Today) // Ei matkata menneisyydessä eikä saman kaupungin sisällä
+            if (comboBox.SelectedIndex == -1 || comboBox1.SelectedIndex == -1 || comboBox.SelectedValue == comboBox1.SelectedValue || pvmvalinta.Date < DateTime.Today)
             {
                 lahtoasemabox.Text = "Tarkista hakuehdot";
                 buyButton.Visibility = Visibility.Visible; //MUISTA POISTAA, testausta varten
             }
             else
             {
+
                 Searchinfo();
                 Results();
                 buyButton.Visibility = Visibility.Visible;
             }
+
+            
 
         }
 
@@ -140,7 +143,7 @@ namespace evapp
 
         private void buyButton_Click(object sender, RoutedEventArgs e)
         {
-            /*Lipputiedot lippu = new Lipputiedot
+            Lipputiedot lippu = new Lipputiedot
             {
                 JunavuoroID = vuorot.Keys.ToString(),
                 Lähtöasema = lahtoasemabox.Text,
@@ -150,7 +153,7 @@ namespace evapp
                 hinta = hintaboksi.Text.Substring(0, 4),
                 pvm = pvmboksi.Text
             };
-            this.Frame.Navigate(typeof(Ticket), lippu); */
+            this.Frame.Navigate(typeof(Ticket), lippu);
             this.Frame.Navigate(typeof(Ticket));
         } 
     }
