@@ -22,7 +22,6 @@ namespace evapp
     /// </summary>
     public sealed partial class Search : Page
     {
-        public Dictionary<int, Junatiedot> junat = new Dictionary<int, Junatiedot>();
         public Dictionary<string, string> asemat = new Dictionary<string, string>();
         public Dictionary<int, Junavuoro> vuorot = new Dictionary<int, Junavuoro>();
         public databaseMYSQL database = new databaseMYSQL("localhost", 3306, "root", "", "test");

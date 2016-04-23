@@ -7,13 +7,6 @@ using MySql.Data.MySqlClient;
 
 namespace evapp
 {
-    public class Junatiedot
-    {
-        //testausta vain
-        public string Junaid { get; set; }
-        public string JunaNimi { get; set; }
-        public string JunaPVM { get; set; }
-    }
     public class Asema
     {
         public string Asemaid { get; set; }

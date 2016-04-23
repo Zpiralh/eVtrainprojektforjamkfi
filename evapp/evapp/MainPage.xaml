@@ -19,5 +19,8 @@
             <TextBlock x:Name="otsikko2" HorizontalAlignment="Center" Margin="0,51,0,0" TextWrapping="Wrap" Text="Rautatiet" VerticalAlignment="Top" Width="92" TextAlignment="Center" Foreground="#FF67D819" FontFamily="Gill Sans MT"/>
             <Button x:Name="gotoSearchbutton" Content="Haku" HorizontalAlignment="Left" Margin="275,43,0,0" VerticalAlignment="Top" Width="75" Background="#FF71A822" Click="button_Click"/>
         </Grid>
+        <Grid HorizontalAlignment="Left" Height="100" Margin="10,540,0,0" VerticalAlignment="Top" Width="340">
+            <Button x:Name="button" Content="Ota yhteyttä" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="156" Click="button_Click_1"/>
+        </Grid>
     </Grid>
 </Page>

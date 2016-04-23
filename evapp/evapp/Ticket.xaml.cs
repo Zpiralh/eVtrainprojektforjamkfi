@@ -31,6 +31,7 @@ namespace evapp
         public Ticket()
         {
             this.InitializeComponent();
+            IDlist.Clear();
             //int kpl = int.Parse(kplBox.SelectedValue.ToString());
             kplBox.Items.Add(1);
             kplBox.Items.Add(2); 
@@ -82,15 +83,16 @@ namespace evapp
             }
             else
             {
-                huomBox.Text = "Hyvä äijä";
-                int kpl = int.Parse(kplBox.SelectedValue.ToString());
+                huomBox.Text = "Pyyntöäsi käsitellään";
+                //int kpl = int.Parse(kplBox.SelectedValue.ToString());
                 string enimi = "'" + enimiBox.Text + "'";
                 string snimi = "'" + snimiBox.Text + "'";
                 string lippuluokka = "'" + lippuluokkaBox.SelectedValue.ToString() + "'";
-                database.InsertData("INSERT INTO Asiakas (Etunimi, Sukunimi) VALUES (" + enimi + ", " + snimi + ");");
-                string kekke = database.GetCustomerid("SELECT AsiakasID FROM Asiakas WHERE Etunimi = " + enimi + " AND Sukunimi = " + snimi + ";", ref IDlist);
-                int customerid = IDlist.Max();
-                database.InsertData("INSERT INTO Lippu (Junavuoro_JunavuoroID, Asiakas_AsiakasID, Lippuluokka) VALUES (" + vuoroid + ", " + customerid + ", " + lippuluokka + ");");
+                //database.InsertData("INSERT INTO Asiakas (Etunimi, Sukunimi) VALUES (" + enimi + ", " + snimi + ");");
+                //string kekke = database.GetCustomerid("SELECT AsiakasID FROM Asiakas WHERE Etunimi = " + enimi + " AND Sukunimi = " + snimi + ";", ref IDlist);
+                //int customerid = IDlist.Max();
+                //database.InsertData("INSERT INTO Lippu (Junavuoro_JunavuoroID, Asiakas_AsiakasID, Lippuluokka) VALUES (" + vuoroid + ", " + customerid + ", " + lippuluokka + ");");
+                this.Frame.Navigate(typeof(Confirmation));
             }
 
 
@@ -110,7 +112,7 @@ namespace evapp
             }
             else
             {
-                lahtoasemabox.Text = "Jotain meni pieleen, emme osaa koodata";
+                lahtoasemabox.Text = "Jotain meni pieleen, lataus epäonnistui";
             }
             base.OnNavigatedTo(e);
         }
