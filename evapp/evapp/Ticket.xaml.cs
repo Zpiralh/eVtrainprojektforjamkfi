@@ -22,7 +22,7 @@ namespace evapp
     /// </summary>
     public sealed partial class Ticket : Page
     {
-        databaseMYSQL database = new databaseMYSQL("localhost", 3306, "root", "", "test");
+        databaseMYSQL database = new databaseMYSQL("sql7.freemysqlhosting.net", 3306, "sql7116678", "H1Fwg1G2Hl", "sql7116678");
         int vuoroid;
         double price;
         List<int> IDlist = new List<int>();

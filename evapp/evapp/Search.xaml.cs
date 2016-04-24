@@ -24,7 +24,7 @@ namespace evapp
     {
         public Dictionary<string, string> asemat = new Dictionary<string, string>();
         public Dictionary<int, Junavuoro> vuorot = new Dictionary<int, Junavuoro>();
-        public databaseMYSQL database = new databaseMYSQL("localhost", 3306, "root", "", "test");
+        public databaseMYSQL database = new databaseMYSQL("sql7.freemysqlhosting.net", 3306, "sql7116678", "H1Fwg1G2Hl", "sql7116678");
         int vuoroid;
         double price;
 
@@ -37,8 +37,10 @@ namespace evapp
             string AsemaPalautus = database.GetStations("SELECT * FROM Asema;", ref asemat);             //haetaan asemat Tietokannasta
             if (AsemaPalautus == "OK")
             {
+                
                 foreach (string value in asemat.Values)
                 {
+                    lahtoasemabox.Text = value;
                     comboBox.Items.Add(value);
                     comboBox1.Items.Add(value);
                 }
