@@ -20,11 +20,11 @@
             <Button x:Name="backButton" Content="Takaisin" HorizontalAlignment="Left" Margin="0,43,0,6" VerticalAlignment="Stretch" Width="75" Background="#FF71A822" Click="backButton_Click"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="412" Margin="0,96,0,0" VerticalAlignment="Top" Width="360">
-            <TextBlock x:Name="lahtoasemabox" HorizontalAlignment="Left" Margin="20,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="130" TextAlignment="Center"/>
-            <TextBlock x:Name="paateasemabox" HorizontalAlignment="Left" Margin="210,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="130" TextAlignment="Center"/>
-            <TextBlock x:Name="lahtoaikabox" HorizontalAlignment="Left" Margin="20,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
-            <TextBlock x:Name="paateaikabox" HorizontalAlignment="Left" Margin="210,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
-            <TextBlock x:Name="pvmboksi" HorizontalAlignment="Left" Margin="20,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
+            <TextBlock x:Name="lahtoasemabox" Foreground="#FF67D819" HorizontalAlignment="Left" Margin="20,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="130" TextAlignment="Center"/>
+            <TextBlock x:Name="paateasemabox" Foreground="#FF67D819" HorizontalAlignment="Left" Margin="210,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="130" TextAlignment="Center"/>
+            <TextBlock x:Name="lahtoaikabox" Foreground="#FF67D819" HorizontalAlignment="Left" Margin="20,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
+            <TextBlock x:Name="paateaikabox" Foreground="#FF67D819" HorizontalAlignment="Left" Margin="210,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
+            <TextBlock x:Name="pvmboksi" Foreground="#FF67D819" HorizontalAlignment="Center" Margin="0,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
             <TextBlock x:Name="hintaboksi" HorizontalAlignment="Left" Margin="210,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
             <Button x:Name="buyButton" Content="Ok" HorizontalAlignment="Center" VerticalAlignment="Top" Width="101" Margin="0,320,0,0" Click="buyButton_Click"/>
             <TextBox x:Name="enimiBox" HorizontalAlignment="Left" Margin="20,171,0,0" TextWrapping="Wrap" Text="Etunimi" VerticalAlignment="Top" Width="130"/>
