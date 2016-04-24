@@ -117,6 +117,7 @@ namespace evapp
             {
                 database.InsertData("INSERT INTO Lippu (Junavuoro_JunavuoroID, Asiakas_AsiakasID, Lippuluokka) VALUES (" + vuoroid + ", " + customerid + ", " + lippuluokka + ");");
             }
+            database.connection.Close();
             this.Frame.Navigate(typeof(Confirmation));
         }
     }

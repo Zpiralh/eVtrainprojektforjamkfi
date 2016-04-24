@@ -89,8 +89,9 @@ namespace evapp
             {
                 textBlock.Text = "Haku epäonnistui." + kekke;
             }
+            
         }
-
+        
         /*
         Löysin miten saa luotua nappeja ohjelmallisesti mutta ongelma on nyt se että miten sitä saa painettua ja siirrettyä tietoa toiseen ikkunaan ja että miten saisi tekstiä ja buttonin samalle riville
         Alla löytämäni koodi joka luo buttonin stackpaneeliin:
@@ -156,6 +157,7 @@ namespace evapp
                 hinta = price,
                 pvm = pvmboksi.Text
             };
+            database.connection.Close();
             this.Frame.Navigate(typeof(Ticket), lippu);
         } 
     }
