@@ -24,18 +24,18 @@ namespace evapp
     {
         databaseMYSQL database = new databaseMYSQL("sql7.freemysqlhosting.net", 3306, "sql7116678", "H1Fwg1G2Hl", "sql7116678");
         int vuoroid;
-        double price;
+        double hinta;
         List<int> IDlist = new List<int>();
-
-
+      
         public Ticket()
         {
             this.InitializeComponent();
+            confirmationButton.Visibility = Visibility.Collapsed;
             IDlist.Clear();
             kplBox.Items.Add(1);
             kplBox.Items.Add(2); 
             kplBox.Items.Add(3); 
-            kplBox.Items.Add(4); 
+            kplBox.Items.Add(4);
             kplBox.Items.Add(5); 
             kplBox.Items.Add(6); 
             kplBox.Items.Add(7);
@@ -73,13 +73,15 @@ namespace evapp
                 int kpl = int.Parse(kplBox.SelectedValue.ToString());
                 if (lippuluokkaBox.SelectedValue.ToString() == "Aikuinen")
                 {
-                    price = price * kpl;
+                    hinta = hinta * kpl;
                 }
                 else
                 {
-                    price = price * kpl * 0.75;
+                    hinta = hinta * kpl * 0.75;
                 }
-                loppuhintaBox.Text = "Total: " + price.ToString() + " €";
+                hinta = Math.Round(hinta, 2);
+                loppuhintaBox.Text = "Total: " + hinta.ToString() + " €";
+                confirmationButton.Visibility = Visibility.Visible;
             }
 
 
@@ -95,7 +97,7 @@ namespace evapp
                 paateaikabox.Text = lippu.Pääteaika;
                 pvmboksi.Text = lippu.pvm;
                 vuoroid = lippu.JunavuoroID;
-                price = lippu.hinta;
+                hinta = lippu.hinta;
             }
             else
             {
@@ -113,9 +115,10 @@ namespace evapp
             database.InsertData("INSERT INTO Asiakas (Etunimi, Sukunimi) VALUES (" + enimi + ", " + snimi + ");");
             string kekke = database.GetCustomerid("SELECT AsiakasID FROM Asiakas WHERE Etunimi = " + enimi + " AND Sukunimi = " + snimi + ";", ref IDlist);
             int customerid = IDlist.Max();
+            string pvm = "'" + pvmboksi.Text + "'";
             for (int i = 0; i < kpl; i++)
             {
-                database.InsertData("INSERT INTO Lippu (Junavuoro_JunavuoroID, Asiakas_AsiakasID, Lippuluokka) VALUES (" + vuoroid + ", " + customerid + ", " + lippuluokka + ");");
+                database.InsertData("INSERT INTO Lippu (Junavuoro_JunavuoroID, Asiakas_AsiakasID, Paivamaara, Lippuluokka) VALUES (" + vuoroid + ", " + customerid + ", " + pvm + ", " + lippuluokka + ");");
             }
             database.connection.Close();
             this.Frame.Navigate(typeof(Confirmation));

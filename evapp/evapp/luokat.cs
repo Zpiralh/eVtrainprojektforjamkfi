@@ -102,7 +102,7 @@ namespace evapp
                 return (ex.Message + " ");
             }
         }
-        public void InsertData(string dbquery)
+        public void InsertData(string dbquery) //Metodi tiedon lisäämiseen tietokantaan, käytetään uuden asiakkaan ja lipun lisäyksessä
 
         {
             MySqlCommand query = connection.CreateCommand();
