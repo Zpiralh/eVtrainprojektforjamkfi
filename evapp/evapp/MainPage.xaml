@@ -17,12 +17,14 @@
         <Grid HorizontalAlignment="Left" Height="81" Margin="0,10,0,0" VerticalAlignment="Top" Width="360">
             <TextBlock x:Name="otsikko" HorizontalAlignment="Center" TextWrapping="Wrap" Text="eV" VerticalAlignment="Top" Height="43" Width="340" TextAlignment="Center" Foreground="#FF67D819" FontSize="32" FontFamily="Broadway" Margin="0,10,0,0"/>
             <TextBlock x:Name="otsikko2" HorizontalAlignment="Center" Margin="0,51,0,0" TextWrapping="Wrap" Text="Rautatiet" VerticalAlignment="Top" Width="92" TextAlignment="Center" Foreground="#FF67D819" FontFamily="Gill Sans MT"/>
-            <Button x:Name="gotoSearchbutton" Content="Haku" HorizontalAlignment="Left" Margin="275,43,0,0" VerticalAlignment="Top" Width="75" Background="#FF71A822" Click="button_Click"/>
+            <Button x:Name="gotoSearchbutton" Content="Haku" HorizontalAlignment="Left" Margin="10,84,0,-35" VerticalAlignment="Top" Width="158" Background="#FF71A822" Click="button_Click"/>
+            <Button x:Name="gotoSearchbutton_Copy" Content="Ota yhteyttä" HorizontalAlignment="Left" Margin="192,84,0,-35" VerticalAlignment="Top" Width="158" Background="#FF71A822" Click="button_Click_1"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="100" Margin="10,540,0,0" VerticalAlignment="Top" Width="340">
-            <Button x:Name="button" Content="Ota yhteyttä" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="156" Click="button_Click_1"/>
+
+            <Button x:Name="button_Copy" Content="Poistu" HorizontalAlignment="Center" Margin="10,58,10,0" VerticalAlignment="Top" Width="320" Click="button_Click_2"/>
         </Grid>
-        <StackPanel x:Name="stackPanel1" HorizontalAlignment="Left" Height="414" Margin="10,126,0,0" VerticalAlignment="Top" Width="340" Background="#FF3DA528">
+        <StackPanel x:Name="stackPanel1" HorizontalAlignment="Left" Height="414" Margin="10,161,0,0" VerticalAlignment="Top" Width="340" Background="#FF3DA528">
             <Grid x:Name="grid1" HorizontalAlignment="Center" Height="70" Margin="5,5,5,5" VerticalAlignment="Top" Width="330" Background="#FF2A7F19">
                 <TextBlock x:Name="lahtoBlock1" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="35" TextAlignment="Center" FontSize="13.333"/>
                 <TextBlock x:Name="paateBlock1" HorizontalAlignment="Right" Margin="0,0,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="35" TextAlignment="Center" FontSize="13.333"/>
@@ -63,7 +65,7 @@
 
 
         </StackPanel>
-        <TextBlock x:Name="textBlock1" Foreground="#FF67D819" HorizontalAlignment="Left" Margin="10,101,0,0" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="340" Height="25" FontSize="13.333"/>
+        <TextBlock x:Name="textBlock1" Foreground="#FF67D819" HorizontalAlignment="Left" Margin="10,136,0,0" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="340" Height="25" FontSize="13.333"/>
 
 
     </Grid>

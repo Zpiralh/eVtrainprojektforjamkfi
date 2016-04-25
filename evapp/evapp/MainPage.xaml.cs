@@ -180,5 +180,10 @@ namespace evapp
             database.connection.Close();
             this.Frame.Navigate(typeof(Ticket), lippu);
         }
+
+        private void button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Exit();
+        }
     }
 }
