@@ -26,7 +26,7 @@
             <TextBlock x:Name="paateaikabox" Foreground="#FF67D819" HorizontalAlignment="Left" Margin="210,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
             <TextBlock x:Name="pvmboksi" Foreground="#FF67D819" HorizontalAlignment="Center" Margin="0,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
             <TextBlock x:Name="hintaboksi" HorizontalAlignment="Left" Margin="210,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextAlignment="Center"/>
-            <Button x:Name="buyButton" Content="Ok" HorizontalAlignment="Center" VerticalAlignment="Top" Width="101" Margin="0,320,0,0" Click="buyButton_Click"/>
+            <Button x:Name="buyButton" Content="Tarkista hinta" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Margin="0,320,0,0" Click="buyButton_Click"/>
             <TextBox x:Name="enimiBox" HorizontalAlignment="Left" Margin="20,171,0,0" TextWrapping="Wrap" Text="Etunimi" VerticalAlignment="Top" Width="130"/>
             <TextBox x:Name="snimiBox" HorizontalAlignment="Left" Margin="210,171,0,0" TextWrapping="Wrap" Text="Sukunimi" VerticalAlignment="Top" Width="130"/>
             <ComboBox x:Name="kplBox" HorizontalAlignment="Left" Margin="20,242,0,0" VerticalAlignment="Top" Width="130" HorizontalContentAlignment="Right"/>

@@ -22,7 +22,7 @@ namespace evapp
     /// </summary>
     public sealed partial class Ticket : Page
     {
-        databaseMYSQL database = new databaseMYSQL("sql7.freemysqlhosting.net", 3306, "sql7116678", "H1Fwg1G2Hl", "sql7116678");
+        databaseMYSQL database = new databaseMYSQL("sql7.freemysqlhosting.net", 3306, "sql7116678", "H1Fwg1G2Hl", "sql7116678"); //tietokannan tiedot. palvelin, username jne..
         int vuoroid;
         double hinta;
         List<int> IDlist = new List<int>();
@@ -48,7 +48,7 @@ namespace evapp
             lippuluokkaBox.Items.Add("Lapsi");
         }
 
-        private void backButton_Click(object sender, RoutedEventArgs e)
+        private void backButton_Click(object sender, RoutedEventArgs e) //takasin edelliselle sivulle
         {
             Frame rootFrame = Window.Current.Content as Frame;
             if (rootFrame == null) return;
@@ -60,7 +60,7 @@ namespace evapp
 
         private void buyButton_Click(object sender, RoutedEventArgs e)
         {
-            if (kplBox.SelectedIndex == -1 || lippuluokkaBox.SelectedIndex == -1 || enimiBox.Text == "Etunimi" || snimiBox.Text == "Sukunimi")
+            if (kplBox.SelectedIndex == -1 || lippuluokkaBox.SelectedIndex == -1 || enimiBox.Text == "Etunimi" || snimiBox.Text == "Sukunimi") //kaikki kohdat täytetty
             {
                 huomBox.Text = "Täytä kaikki kohdat";
                 if (string.IsNullOrEmpty(enimiBox.Text) || string.IsNullOrEmpty(snimiBox.Text))
@@ -75,18 +75,25 @@ namespace evapp
                 {
                     hinta = hinta * kpl;
                 }
-                else
+                else 
                 {
-                    hinta = hinta * kpl * 0.75;
+                    hinta = hinta * kpl * 0.75;        //opiskelijavarusmies yms alennukset
                 }
                 hinta = Math.Round(hinta, 2);
-                loppuhintaBox.Text = "Total: " + hinta.ToString() + " €";
+                if (kpl > 1)
+                {
+                    loppuhintaBox.Text = kpl.ToString() + " lippua, yhteensä " + hinta.ToString() + " €";
+                }
+                else
+                {
+                    loppuhintaBox.Text = "1 lippu, hinta " + hinta.ToString() + " €";
+                }
                 confirmationButton.Visibility = Visibility.Visible;
             }
 
 
         }
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e) //tuo junavuoron tiedot edelliseltä sivulta
         {
             if (e.Parameter is Lipputiedot)
             {
@@ -106,19 +113,20 @@ namespace evapp
             base.OnNavigatedTo(e);
         }
 
-        private void confirmationButton_Click(object sender, RoutedEventArgs e)
+        private void confirmationButton_Click(object sender, RoutedEventArgs e) //Varaa liput, lisää tietokantaan
         {
+            IDlist.Clear();
             int kpl = int.Parse(kplBox.SelectedValue.ToString());
             string enimi = "'" + enimiBox.Text + "'";
             string snimi = "'" + snimiBox.Text + "'";
             string lippuluokka = "'" + lippuluokkaBox.SelectedValue.ToString() + "'";
-            database.InsertData("INSERT INTO Asiakas (Etunimi, Sukunimi) VALUES (" + enimi + ", " + snimi + ");");
-            string kekke = database.GetCustomerid("SELECT AsiakasID FROM Asiakas WHERE Etunimi = " + enimi + " AND Sukunimi = " + snimi + ";", ref IDlist);
+            database.InsertData("INSERT INTO Asiakas (Etunimi, Sukunimi) VALUES (" + enimi + ", " + snimi + ");"); //luo uuden asiakkaan tietokantaan
+            string IDhaku = database.GetCustomerid("SELECT AsiakasID FROM Asiakas WHERE Etunimi = " + enimi + " AND Sukunimi = " + snimi + ";", ref IDlist); //hakee asiakasid:n, jota tarvitaan kun lisätään uutta lippua
             int customerid = IDlist.Max();
             string pvm = "'" + pvmboksi.Text + "'";
             for (int i = 0; i < kpl; i++)
             {
-                database.InsertData("INSERT INTO Lippu (Junavuoro_JunavuoroID, Asiakas_AsiakasID, Paivamaara, Lippuluokka) VALUES (" + vuoroid + ", " + customerid + ", " + pvm + ", " + lippuluokka + ");");
+                database.InsertData("INSERT INTO Lippu (Junavuoro_JunavuoroID, Asiakas_AsiakasID, Paivamaara, Lippuluokka) VALUES (" + vuoroid + ", " + customerid + ", " + pvm + ", " + lippuluokka + ");"); //luo databaseen niin monta lippua kuin käyttäjä valitsee
             }
             database.connection.Close();
             this.Frame.Navigate(typeof(Confirmation));

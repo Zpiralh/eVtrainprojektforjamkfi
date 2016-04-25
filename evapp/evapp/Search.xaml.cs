@@ -24,7 +24,7 @@ namespace evapp
     {
         public Dictionary<string, string> asemat = new Dictionary<string, string>();
         public Dictionary<int, Junavuoro> vuorot = new Dictionary<int, Junavuoro>();
-        public databaseMYSQL database = new databaseMYSQL("sql7.freemysqlhosting.net", 3306, "sql7116678", "H1Fwg1G2Hl", "sql7116678");
+        public databaseMYSQL database = new databaseMYSQL("sql7.freemysqlhosting.net", 3306, "sql7116678", "H1Fwg1G2Hl", "sql7116678"); //tietokannan tiedot. palvelin, username jne..
         int vuoroid;
         double hinta;
 
@@ -71,46 +71,30 @@ namespace evapp
             string lähtö = "'" + asemat.FirstOrDefault(x => x.Value.Contains(comboBox.SelectedValue.ToString())).Key + "'"; //Helsingin rautatieasema = 'HKI', haetaan tietokannasta asematunnuksella
             string pääte = "'" + asemat.FirstOrDefault(x => x.Value.Contains(comboBox1.SelectedValue.ToString())).Key + "'";
             vuorot.Clear();
-            string kekke = database.GetRoutes("SELECT * FROM Junavuoro WHERE Lahtoasema = " + lähtö + " AND Paateasema = " + pääte + ";", ref vuorot); // tietokannalle lähetettävä query
-            if (kekke == "OK")
+            string reittihaku = database.GetRoutes("SELECT * FROM Junavuoro WHERE Lahtoasema = " + lähtö + " AND Paateasema = " + pääte + ";", ref vuorot); // tietokannalle lähetettävä query
+            if (reittihaku == "OK")
             {
                 foreach (Junavuoro vuoro in vuorot.Values)
                 {
-                    lahtoaikabox.Text = vuoro.Lahtoaika.Substring(0, 5);
+                    lahtoaikabox.Text = vuoro.Lahtoaika.Substring(0, 5); //08:00:00 -> 08:00
                     paateaikabox.Text = vuoro.Saapumisaika.Substring(0, 5);
                 }
             }
             else
             {
-                textBlock.Text = "Haku epäonnistui." + kekke;
+                textBlock.Text = "Haku epäonnistui.";
             }
             
         }
-        
-        /*
-        Löysin miten saa luotua nappeja ohjelmallisesti mutta ongelma on nyt se että miten sitä saa painettua ja siirrettyä tietoa toiseen ikkunaan ja että miten saisi tekstiä ja buttonin samalle riville
-        Alla löytämäni koodi joka luo buttonin stackpaneeliin:
 
-                for (int i = 0; i < 10; i++)
-            {
-                //create button
-                Button btn = new Button();
-                btn.Content = "buttoniolen";
-                btn.Name = "Juna " + i;
-                btn.Margin = new Thickness(0, 0, 0, 12);
-                stackPanel.Children.Add(btn);
-            }    
-        */
         private void Searchinfo() //Muiden tietojen haku ja tulosten sijoittelu
         {
             lahtoasemabox.Text = comboBox.SelectedValue.ToString();
             paateasemabox.Text = comboBox1.SelectedValue.ToString();
-            int vuosi = pvmvalinta.Date.Year;
-            int kuukausi = pvmvalinta.Date.Month;
-            int päivä = pvmvalinta.Date.Day;
+            string pvm = pvmvalinta.Date.ToString("dd.MM.yyyy");
             string lähtöasema = asemat.FirstOrDefault(x => x.Value.Contains(comboBox.SelectedValue.ToString())).Key;
             string pääteasema = asemat.FirstOrDefault(x => x.Value.Contains(comboBox1.SelectedValue.ToString())).Key;
-            if ((lähtöasema == "HKI" && pääteasema == "OUL") || (lähtöasema == "OUL" && pääteasema == "HKI"))
+            if ((lähtöasema == "HKI" && pääteasema == "OUL") || (lähtöasema == "OUL" && pääteasema == "HKI")) //hki-oulu kalliimmat liput
             {
                 hinta = 15;
             }
@@ -122,7 +106,7 @@ namespace evapp
             {
                 hinta = hinta * 1.5;
             }
-            pvmboksi.Text = päivä + "." + kuukausi + "." + vuosi;
+            pvmboksi.Text = pvm;
             hinta = Math.Round(hinta, 2);
             hintaboksi.Text = hinta + "  €";
 
@@ -130,7 +114,7 @@ namespace evapp
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
+            this.Frame.Navigate(typeof(MainPage)); //takaisin etusivulle
         }
 
         private void buyButton_Click(object sender, RoutedEventArgs e)
