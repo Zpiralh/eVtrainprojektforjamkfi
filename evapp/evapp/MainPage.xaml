@@ -22,6 +22,48 @@
         <Grid HorizontalAlignment="Left" Height="100" Margin="10,540,0,0" VerticalAlignment="Top" Width="340">
             <Button x:Name="button" Content="Ota yhteyttä" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="156" Click="button_Click_1"/>
         </Grid>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="155,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <StackPanel x:Name="stackPanel1" HorizontalAlignment="Left" Height="414" Margin="10,126,0,0" VerticalAlignment="Top" Width="340" Background="#FF3DA528">
+            <Grid x:Name="grid1" HorizontalAlignment="Center" Height="70" Margin="5,5,5,5" VerticalAlignment="Top" Width="330" Background="#FF2A7F19">
+                <TextBlock x:Name="lahtoBlock1" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="35" TextAlignment="Center"/>
+                <TextBlock x:Name="paateBlock1" HorizontalAlignment="Right" Margin="0,0,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="35" TextAlignment="Center"/>
+                <TextBlock x:Name="aikaBlock1" HorizontalAlignment="Center" Margin="0,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="35" TextAlignment="Center"/>
+                <TextBlock x:Name="idBlock1" HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <Button x:Name="button1" Content="Liput" HorizontalAlignment="Left" Margin="270,40,0,0" VerticalAlignment="Top" Width="60" Height="30"/>
+
+            </Grid>
+            <Grid x:Name="grid2" HorizontalAlignment="Center" Height="70" Margin="5,5,5,5" VerticalAlignment="Top" Width="330" Background="#FF2A7F19">
+                <TextBlock x:Name="lahtoBlock2" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="35" TextAlignment="Center"/>
+                <TextBlock x:Name="paateBlock2" HorizontalAlignment="Right" Margin="0,0,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="35" TextAlignment="Center"/>
+                <TextBlock x:Name="aikaBlock2" HorizontalAlignment="Center" Margin="0,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="35" TextAlignment="Center"/>
+                <TextBlock x:Name="idBlock2" HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <Button x:Name="button2" Content="Liput" HorizontalAlignment="Left" Margin="270,40,0,0" VerticalAlignment="Top" Width="60" Height="30"/>
+            </Grid>
+            <Grid x:Name="grid3" HorizontalAlignment="Center" Height="70" Margin="5,5,5,5" VerticalAlignment="Top" Width="330" Background="#FF2A7F19">
+                <TextBlock x:Name="lahtoBlock3" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="35" TextAlignment="Center"/>
+                <TextBlock x:Name="paateBlock3" HorizontalAlignment="Right" Margin="0,0,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="35" TextAlignment="Center"/>
+                <TextBlock x:Name="aikaBlock3" HorizontalAlignment="Center" Margin="0,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="35" TextAlignment="Center"/>
+                <TextBlock x:Name="idBlock3" HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <Button x:Name="button3" Content="Liput" HorizontalAlignment="Left" Margin="270,40,0,0" VerticalAlignment="Top" Width="60" Height="30"/>
+            </Grid>
+            <Grid x:Name="grid4" HorizontalAlignment="Center" Height="70" Margin="5,5,5,5" VerticalAlignment="Top" Width="330" Background="#FF2A7F19">
+                <TextBlock x:Name="lahtoBlock4" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="35" TextAlignment="Center"/>
+                <TextBlock x:Name="paateBlock4" HorizontalAlignment="Right" Margin="0,0,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="35" TextAlignment="Center"/>
+                <TextBlock x:Name="aikaBlock4" HorizontalAlignment="Center" Margin="0,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="35" TextAlignment="Center"/>
+                <TextBlock x:Name="idBlock4" HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <Button x:Name="button4" Content="Liput" HorizontalAlignment="Left" Margin="270,40,0,0" VerticalAlignment="Top" Width="60" Height="30"/>
+            </Grid>
+            <Grid x:Name="grid5" HorizontalAlignment="Center" Height="70" Margin="5,5,5,5" VerticalAlignment="Top" Width="330" Background="#FF2A7F19">
+                <TextBlock x:Name="lahtoBlock5" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="35" TextAlignment="Center"/>
+                <TextBlock x:Name="paateBlock5" HorizontalAlignment="Right" Margin="0,0,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="35" TextAlignment="Center"/>
+                <TextBlock x:Name="aikaBlock5" HorizontalAlignment="Center" Margin="0,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="35" TextAlignment="Center"/>
+                <TextBlock x:Name="idBlock5" HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <Button x:Name="button5" Content="Liput" HorizontalAlignment="Left" Margin="270,40,0,0" VerticalAlignment="Top" Width="60" Height="30"/>
+            </Grid>
+
+
+
+        </StackPanel>
+
+
     </Grid>
 </Page>
