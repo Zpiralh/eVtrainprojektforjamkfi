@@ -60,6 +60,7 @@ namespace evapp
 
         private void buyButton_Click(object sender, RoutedEventArgs e)
         {
+            huomBox.Text = String.Empty;
             if (kplBox.SelectedIndex == -1 || lippuluokkaBox.SelectedIndex == -1 || enimiBox.Text == "Etunimi" || snimiBox.Text == "Sukunimi") //kaikki kohdat täytetty
             {
                 huomBox.Text = "Täytä kaikki kohdat";
