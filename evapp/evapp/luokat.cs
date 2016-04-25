@@ -5,14 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
-namespace evapp
-{
-    public class Asema
-    {
-        public string Asemaid { get; set; }
-        public string Asemanimi { get; set; }
-    }
-    public class Junavuoro
+namespace evapp { 
+
+    public class Junavuoro // junavuoron luokka joka talletetaan dictionaryyn
     {
         public string JunavuoroID { get; set; }
         public string Lahtoaika { get; set; }
@@ -21,7 +16,7 @@ namespace evapp
         public string Lahtoasema { get; set; }
         public string Paateasema { get; set; }
     }
-    public class Lipputiedot
+    public class Lipputiedot // Lipputietojen luokka jota käytetään yhdessä dictionaryn kanssa
     {
         public int JunavuoroID { get; set; }
         public string Lähtöasema { get; set; }
@@ -32,7 +27,7 @@ namespace evapp
         public string pvm { get; set; }
     }
 
-    public class databaseMYSQL
+    public class databaseMYSQL // Mysql Luokka joka hoitaa yhteydet mysql databasen kanssa (käytetään MySQL.Data.RT.dll referenssinä ei ole valmiina C#:ssä)
     {
         public MySqlConnection connection = new MySqlConnection();
         public databaseMYSQL(String hostname, int port, String username, String password, String database)
@@ -46,8 +41,8 @@ namespace evapp
                     "database=" + database + ";" +
                         "uid=" + username + ";" +
                         "password=" + password + ";" +  
-                        "SslMode = None;";
-                connection.Open();
+                        "SslMode = None;"; //MySQL.Data.RT ei tue SSL yhteyksiä joten joudutaan ottamaan ssl pois käytöstä..
+                connection.Open(); //Avataan mysql yhteydet
             }
             catch 
             {
@@ -59,24 +54,25 @@ namespace evapp
         {
             MySqlCommand query = connection.CreateCommand();
             query.CommandText = dbquery;
-
+            
             try
             {
                 MySqlDataReader result = query.ExecuteReader();
-                while (result.Read())
+                while (result.Read()) //otetaan kaikki data talteen mitä kannasta löytyy kyselyllä
                 {
                     vuorot.Add(int.Parse(result["JunavuoroID"].ToString()), new Junavuoro { JunavuoroID = result["JunavuoroID"].ToString(),
                         Lahtoaika = result["Lahtoaika"].ToString(), Saapumisaika = result["Saapumisaika"].ToString(), JunaID = result["JunaID"].ToString(),
-                        Lahtoasema = result["Lahtoasema"].ToString(), Paateasema = result["Paateasema"].ToString() });
+                        Lahtoasema = result["Lahtoasema"].ToString(), Paateasema = result["Paateasema"].ToString() }); // syötetään kannasta saadut tiedot Dictionaryyn
                 }
-                result.Close();
+                result.Close(); // suljetaan tulokset
 
-                return "OK";
+                return "OK"; // Palautetaan Arvo "OK" kun kaikki menee ok
             }
             catch (Exception ex)
             {
 
-                return (ex.Message + " ");
+                connection.Close(); //Suljetaan database yhteydet kun tapahtuu virhe
+                return (" "+ ex.Message + " "); // Palautetaan virheilmoitus
             }
         }
         public string GetStations(string dbquery, ref Dictionary<string, string> asemat) // Asemien haku tietokannasta ja lisääminen dictionaryyn
@@ -89,30 +85,31 @@ namespace evapp
                 MySqlDataReader result = query.ExecuteReader();
                 while (result.Read())
                 {
-                    asemat.Add(result["Asematunnus"].ToString(), result["Asemanimi"].ToString());
+                    asemat.Add(result["Asematunnus"].ToString(), result["Asemanimi"].ToString()); //tulokset Dictionaryyn
                 }
                 result.Close();
 
 
-                return "OK";
+                return "OK"; // Palautetaan Arvo "OK" kun kaikki menee ok
             }
             catch (Exception ex)
             {
-                connection.Close();
-                return (ex.Message + " ");
+
+                connection.Close(); //Suljetaan database yhteydet kun tapahtuu virhe
+                return (" " + ex.Message + " "); // Palautetaan virheilmoitus
             }
         }
         public void InsertData(string dbquery) //Metodi tiedon lisäämiseen tietokantaan, käytetään uuden asiakkaan ja lipun lisäyksessä
 
         {
             MySqlCommand query = connection.CreateCommand();
-            query.CommandText = dbquery;
+            query.CommandText = dbquery; //lähetettävä kysely tietokannalle
             try { 
-            MySqlDataReader result = query.ExecuteReader();
-           result.Close();
+            MySqlDataReader result = query.ExecuteReader(); // suoritetaan sql kysely
+           result.Close(); // suljetaan kysely
             } catch
             {
-
+              
             }
 
         }
@@ -123,18 +120,19 @@ namespace evapp
 
             try
             {
-                MySqlDataReader result = query.ExecuteReader();
+                MySqlDataReader result = query.ExecuteReader(); //suoritetaan kysely 
                 while (result.Read())
                 {
-                    IDlist.Add(int.Parse(result["AsiakasID"].ToString()));
+                    IDlist.Add(int.Parse(result["AsiakasID"].ToString())); //syötetään asiakasidt listaan
                 }
-                result.Close();
+                result.Close(); // suljetaan tulokset
 
-                return "OK";
+                return "OK"; // Palautetaan Arvo "OK" kun kaikki menee ok
             }
             catch (Exception ex)
             {
-                return (ex.Message + " ");
+                connection.Close(); //Suljetaan database yhteydet kun tapahtuu virhe
+                return (" " + ex.Message + " "); // Palautetaan virheilmoitus
             }
         }
     }
