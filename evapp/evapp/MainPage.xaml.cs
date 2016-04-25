@@ -41,7 +41,6 @@ namespace evapp
             grid3.Visibility = Visibility.Collapsed;
             grid4.Visibility = Visibility.Collapsed;
             grid5.Visibility = Visibility.Collapsed;
-            textBlock1.Text = "Seuraavaksi lähteviä junia, osta liput äkkilähtöhintaan!";
             NextTrains();
         }
         public void NextTrains() //Hakee tietokannasta max 5 seuraavaksi lähtevää junaa, ja listaa ne etusivulle, josta voi nopeasti ostaa niihin "äkkilähtö-lippuja"
@@ -61,19 +60,30 @@ namespace evapp
                 string kekke = database.GetRoutes("SELECT * FROM Junavuoro WHERE Lahtoaika > " + aika + " ORDER BY Lahtoaika LIMIT 5;", ref vuorot); //hakee 5 pian lähtevää junavuoroa
                 if (kekke == "OK")
                 {
+                    textBlock1.Text = "Seuraavaksi lähteviä junia, osta liput äkkilähtöhintaan!";
                     int krt = 0;
-                    foreach (Junavuoro vuoro in vuorot.Values) //tuo vain niin monta gridiä näkyviin kuin vuoroja löytyy (krt-muuttuja)
+
+                    if (!vuorot.ContainsKey(20)) //illan viimeinen vuoro jo lähtenyt
                     {
-                        string lahtoasemanimi = asemat[vuoro.Lahtoasema];
-                        string paateasemanimi = asemat[vuoro.Paateasema];
-                        gridit[krt].Visibility = Visibility.Visible;
-                        napit[krt].Visibility = Visibility.Visible;
-                        idblokit[krt].Visibility = Visibility.Collapsed;
-                        lahtoblokit[krt].Text = lahtoasemanimi;
-                        paateblokit[krt].Text = paateasemanimi;
-                        aikablokit[krt].Text = vuoro.Lahtoaika.Substring(0, 5) + " - " + vuoro.Saapumisaika.Substring(0, 5);
-                        idblokit[krt].Text = vuoro.JunavuoroID;     
-                        krt++;
+                        grid1.Visibility = Visibility.Visible;
+                        button1.Visibility = Visibility.Collapsed;
+                        aikaBlock1.Text = "Tänään ei lähde enää vuoroja.";
+                    }
+                    else
+                    {
+                        foreach (Junavuoro vuoro in vuorot.Values) //tuo vain niin monta gridiä näkyviin kuin vuoroja löytyy (krt-muuttuja)
+                        {
+                            string lahtoasemanimi = asemat[vuoro.Lahtoasema];
+                            string paateasemanimi = asemat[vuoro.Paateasema];
+                            gridit[krt].Visibility = Visibility.Visible;
+                            napit[krt].Visibility = Visibility.Visible;
+                            idblokit[krt].Visibility = Visibility.Collapsed;
+                            lahtoblokit[krt].Text = lahtoasemanimi;
+                            paateblokit[krt].Text = paateasemanimi;
+                            aikablokit[krt].Text = vuoro.Lahtoaika.Substring(0, 5) + " - " + vuoro.Saapumisaika.Substring(0, 5);
+                            idblokit[krt].Text = vuoro.JunavuoroID;
+                            krt++;
+                        }
                     }
                 }
 
