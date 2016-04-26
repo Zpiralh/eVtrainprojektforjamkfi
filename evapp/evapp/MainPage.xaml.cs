@@ -90,13 +90,15 @@ namespace evapp
                 else
                 {
                     grid1.Visibility = Visibility.Visible;
+                    button1.Visibility = Visibility.Collapsed;
                     lahtoBlock1.Text = "Yhteys tietokantaan epäonnistui";
                 }
             }
             else
             {
+                button1.Visibility = Visibility.Collapsed;
                 grid1.Visibility = Visibility.Visible;
-                lahtoBlock1.Text = "Yhteys tietokantaan epäonnistui";
+                aikaBlock1.Text = "Yhteys tietokantaan epäonnistui";
             }
             
         }

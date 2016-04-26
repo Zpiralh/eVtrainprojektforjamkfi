@@ -60,6 +60,7 @@ namespace evapp
 
         private void buyButton_Click(object sender, RoutedEventArgs e)
         {
+            double hinta1;
             huomBox.Text = String.Empty;
             if (kplBox.SelectedIndex == -1 || lippuluokkaBox.SelectedIndex == -1 || enimiBox.Text == "Etunimi" || snimiBox.Text == "Sukunimi") //kaikki kohdat täytetty
             {
@@ -74,20 +75,20 @@ namespace evapp
                 int kpl = int.Parse(kplBox.SelectedValue.ToString());
                 if (lippuluokkaBox.SelectedValue.ToString() == "Aikuinen")
                 {
-                    hinta = hinta * kpl;
+                    hinta1 = hinta * kpl;
                 }
                 else 
                 {
-                    hinta = hinta * kpl * 0.75;        //opiskelijavarusmies yms alennukset
+                    hinta1 = hinta * kpl * 0.75;        //opiskelijavarusmies yms alennukset
                 }
                 hinta = Math.Round(hinta, 2);
                 if (kpl > 1)
                 {
-                    loppuhintaBox.Text = kpl.ToString() + " lippua, yhteensä " + hinta.ToString() + " €";
+                    loppuhintaBox.Text = kpl.ToString() + " lippua, yhteensä " + hinta1.ToString() + " €";
                 }
                 else
                 {
-                    loppuhintaBox.Text = "1 lippu, hinta " + hinta.ToString() + " €";
+                    loppuhintaBox.Text = "1 lippu, hinta " + hinta1.ToString() + " €";
                 }
                 confirmationButton.Visibility = Visibility.Visible;
             }
