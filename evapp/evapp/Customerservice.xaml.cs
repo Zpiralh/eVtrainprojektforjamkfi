@@ -18,7 +18,7 @@ using Windows.UI.Xaml.Navigation;
 namespace evapp
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Ota-yhteyttä -sivu
     /// </summary>
     public sealed partial class Customerservice : Page
     {
@@ -27,7 +27,7 @@ namespace evapp
             this.InitializeComponent();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void button_Click(object sender, RoutedEventArgs e) //takaisin etusivulle
         {
             this.Frame.Navigate(typeof(MainPage));
         }

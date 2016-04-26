@@ -25,7 +25,7 @@ namespace evapp
     
     public sealed partial class MainPage : Page
     {
-        Dictionary<int, Junavuoro> vuorot = new Dictionary<int, Junavuoro>();
+        public Dictionary<int, Junavuoro> vuorot = new Dictionary<int, Junavuoro>();
         public Dictionary<string, string> asemat = new Dictionary<string, string>();
         public databaseMYSQL database = new databaseMYSQL("sql7.freemysqlhosting.net", 3306, "sql7116678", "H1Fwg1G2Hl", "sql7116678"); //tietokannan tiedot. palvelin, username jne..
         double hinta = 8;
@@ -91,7 +91,7 @@ namespace evapp
                 {
                     grid1.Visibility = Visibility.Visible;
                     button1.Visibility = Visibility.Collapsed;
-                    lahtoBlock1.Text = "Yhteys tietokantaan epäonnistui";
+                    aikaBlock1.Text = "Yhteys tietokantaan epäonnistui";
                 }
             }
             else
@@ -193,7 +193,7 @@ namespace evapp
             this.Frame.Navigate(typeof(Ticket), lippu);
         }
 
-        private void button_Click_2(object sender, RoutedEventArgs e)
+        private void button_Click_2(object sender, RoutedEventArgs e) //sulkee sovelluksen
         {
             Application.Current.Exit();
         }

@@ -62,7 +62,7 @@ namespace evapp
         {
             double hinta1;
             huomBox.Text = String.Empty;
-            if (kplBox.SelectedIndex == -1 || lippuluokkaBox.SelectedIndex == -1 || enimiBox.Text == "Etunimi" || snimiBox.Text == "Sukunimi") //kaikki kohdat täytetty
+            if (kplBox.SelectedIndex == -1 || lippuluokkaBox.SelectedIndex == -1 || enimiBox.Text == "Etunimi" || snimiBox.Text == "Sukunimi") //kaikki kohdat pitää olla täytetty
             {
                 huomBox.Text = "Täytä kaikki kohdat";
                 if (string.IsNullOrEmpty(enimiBox.Text) || string.IsNullOrEmpty(snimiBox.Text))

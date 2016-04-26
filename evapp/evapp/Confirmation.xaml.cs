@@ -18,7 +18,7 @@ using Windows.UI.Xaml.Navigation;
 namespace evapp
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Lipunvarauksen varmistussivu
     /// </summary>
     public sealed partial class Confirmation : Page
     {
@@ -28,7 +28,7 @@ namespace evapp
             textBlock.Text = "Lippusi varaaminen onnistui, kiitos!";
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void button_Click(object sender, RoutedEventArgs e) //etusivulle
         {
             this.Frame.Navigate(typeof(MainPage));
         }
